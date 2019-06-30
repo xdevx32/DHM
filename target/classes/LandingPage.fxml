@@ -4,54 +4,29 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="625.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LandingPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LandingPageController">
     <children>
-        <TabPane fx:id="LandingPageTabPane" layoutX="-6.0" layoutY="-5.0" prefHeight="625.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-5.0">
+        <TabPane fx:id="LandingPageTabPane" layoutX="-6.0" layoutY="-5.0" prefHeight="750.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-5.0">
             <tabs>
-                <Tab text="Таб 1">
+
+                <Tab text="Фирми и служители">
                     <content>
-                        <!--<fx:include fx:id="ParkFacilitiesTab" source="TabOne.fxml" />-->
+                        <fx:include fx:id="CompaniesAndEmployeesTab" source="CompaniesAndEmployeesTab.fxml" />
                     </content>
                 </Tab>
 
-                <Tab text="Таб 2">
+                <Tab text="Сгради">
                     <content>
-
+                        <fx:include fx:id="BuildingsTab" source="BuildingsTab.fxml" />
                     </content>
                 </Tab>
 
-                <Tab text="Таб 3">
-                    <content>
-
-                    </content>
-                </Tab>
-                <!--
-                <Tab text="Увеселителни паркове">
-                    <content>
-                        <fx:include fx:id="ParkTab" source="ParksTab.fxml" />
-                    </content>
-                </Tab>
-                <Tab text="Мениджъри">
-                    <content>
-                        <fx:include fx:id="ManagerTab" source="ManagersTab.fxml" />
-                    </content>
-                </Tab>
-                <Tab text="Съоражения">
-                    <content>
-                        <fx:include fx:id="FacilityTab" source="FacilitiesTab.fxml" />
-                    </content>
-                </Tab>
-                <Tab text="Деца">
-                    <content>
-                        <fx:include fx:id="KidTab" source="KidsTab.fxml" />
-                    </content>
-                </Tab>
                 <Tab text="Справки">
                     <content>
-                        <fx:include fx:id="ReportTab" source="ReportTab.fxml" />
+                        <fx:include fx:id="ReportsTab" source="ReportsTab.fxml" />
                     </content>
                 </Tab>
-                -->
+
             </tabs>
         </TabPane>
     </children>

@@ -21,10 +21,10 @@ public class Building implements java.io.Serializable{
 
     private Integer apartmentsCount;
 
-    private Double area; //area built on ?! TODO
+    private Double area;
 
-    // Shared parts?
-    // Probably a double? TODO
+    private Integer sharedParts;
+
 
 
 
