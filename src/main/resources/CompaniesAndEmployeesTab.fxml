@@ -1,14 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.CompaniesAndEmployeesTabController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="750.0" prefWidth="1000.0"
+            xmlns="http://javafx.com/javafx/8.0.171" fx:controller="controller.CompaniesAndEmployeesTabController">
+   <children>
+      <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" layoutX="35.0" layoutY="40.0" prefHeight="345.0"
+                prefWidth="269.0">
+         <children>
+            <TableView fx:id="employeeTableView" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0"
+                       prefWidth="310.0">
+               <columns>
+                  <TableColumn fx:id="employeeNameColumn" prefWidth="155.0" text="Име"/>
+                  <TableColumn fx:id="employeeEgnColumn" prefWidth="154.0" text="ЕГН"/>
+               </columns>
+            </TableView>
+         </children>
+      </FlowPane>
+      <FlowPane alignment="TOP_CENTER" layoutX="35.0" layoutY="398.0" prefHeight="129.0" prefWidth="307.0">
+         <children>
+            <GridPane hgap="10.0" prefHeight="118.0" prefWidth="283.0" vgap="10.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="158.0" text="Име"/>
+                  <Button mnemonicParsing="false" onAction="#saveEmployeeData" prefHeight="27.0" prefWidth="162.0"
+                          text="Запази" GridPane.rowIndex="2"/>
+                  <TextField fx:id="employeeNameTextField" prefHeight="27.0" prefWidth="149.0" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets/>
+                     </GridPane.margin>
+                  </TextField>
+                  <Button mnemonicParsing="false" onAction="#deleteEmployeeData" prefHeight="27.0" prefWidth="228.0"
+                          text="Изтрий" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                  <Label prefHeight="17.0" prefWidth="157.0" text="ЕГН" GridPane.rowIndex="1"/>
+                  <TextField fx:id="employeeEgnTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="164.0" minWidth="10.0"
+                                     prefWidth="130.0"/>
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="291.0" minWidth="10.0"
+                                     prefWidth="195.0"/>
+               </columnConstraints>
+               <padding>
+                  <Insets top="20.0"/>
+               </padding>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+               </rowConstraints>
+            </GridPane>
+         </children>
+      </FlowPane>
+      <Label layoutX="35.0" layoutY="12.0" prefHeight="17.0" prefWidth="208.0" text="Работници">
+         <font>
+            <Font size="18.0"/>
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
