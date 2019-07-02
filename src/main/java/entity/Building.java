@@ -2,6 +2,9 @@ package entity;
 
 import javax.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -28,8 +31,7 @@ public class Building implements java.io.Serializable{
 
     private Integer sharedParts;
 
-    private ApartmentOwner apartmentOwner;
-
+    private Set<ApartmentOwner> apartmentOwners = new HashSet<ApartmentOwner>(0);
 
     /*
      *
@@ -75,11 +77,11 @@ public class Building implements java.io.Serializable{
         return sharedParts;
     }
 
-    @OneToOne
-    public ApartmentOwner getApartmentOwner() {
-        return apartmentOwner;
+    @ManyToOne
+    @JoinColumn(name = "idBuilding", nullable = false)
+    public Set<ApartmentOwner> getApartmentOwners() {
+        return apartmentOwners;
     }
-
 
     /*
      *
@@ -98,8 +100,9 @@ public class Building implements java.io.Serializable{
     public void setAddress(String address) {
         this.address = address;
     }
-    public void setApartmentOwner(ApartmentOwner apartmentOwner) {
-        this.apartmentOwner = apartmentOwner;
+
+    public void setApartmentOwner(Set<ApartmentOwner> apartmentOwner) {
+        this.apartmentOwners = apartmentOwners;
     }
 
     public void setFloors(Integer floors) {

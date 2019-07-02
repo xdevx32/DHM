@@ -45,7 +45,7 @@ public class ApartmentOwner implements java.io.Serializable {
         return egn;
     }
 
-    @OneToOne(mappedBy = "apartment_owner")
+    @OneToMany(mappedBy = "apartment_owner")
     public Building getBuilding() {
         return building;
     }

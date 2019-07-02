@@ -43,7 +43,6 @@ public class Employee {
         return egn;
     }
 
-
     @ManyToOne
     @JoinColumn(name = "idCompany", nullable = false)
     public Company getCompany() {
@@ -59,7 +58,6 @@ public class Employee {
     public void setIdEmployee(Integer idEmployee) {
         this.idEmployee = idEmployee;
     }
-
 
     public void setName(String name) {
         this.name = name;
@@ -88,7 +86,6 @@ public class Employee {
         this.name = name;
         this.egn = egn;
     }
-
 
     /*
      *
