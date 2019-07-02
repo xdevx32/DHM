@@ -12,12 +12,13 @@
                 <TableView fx:id="buildingTableView" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0"
                            prefWidth="717.0">
                     <columns>
-                        <TableColumn fx:id="buildingIdColumn" prefWidth="66.0" text="Номер"/>
-                        <TableColumn fx:id="buildingAddressColumn" prefWidth="207.0" text="Адрес"/>
-                        <TableColumn fx:id="buildingFloorsColumn" prefWidth="83.0" text="Етажи"/>
-                        <TableColumn fx:id="buildingApartmentsCountColumn" prefWidth="167.0" text="Апартаменти"/>
-                        <TableColumn fx:id="buildingsAreaColumn" prefWidth="88.0" text="Площ"/>
-                        <TableColumn fx:id="buildingSharedPartsColumn" prefWidth="104.0" text="Общи части"/>
+                        <TableColumn fx:id="buildingIdColumn" prefWidth="35.0" text="№"/>
+                        <TableColumn fx:id="buildingAddressColumn1" prefWidth="108.0" text="Име"/>
+                        <TableColumn fx:id="buildingAddressColumn" prefWidth="201.0" text="Адрес"/>
+                        <TableColumn fx:id="buildingFloorsColumn" prefWidth="72.0" text="Етажи"/>
+                        <TableColumn fx:id="buildingApartmentsCountColumn" prefWidth="107.0" text="Апартаменти"/>
+                        <TableColumn fx:id="buildingsAreaColumn" text="Площ"/>
+                        <TableColumn fx:id="buildingSharedPartsColumn" prefWidth="111.0" text="Общи части"/>
                     </columns>
                 </TableView>
             </children>
