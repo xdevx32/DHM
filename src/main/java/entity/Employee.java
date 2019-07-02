@@ -14,4 +14,6 @@ public class Employee {
 
     private String egn;
 
+    private Company company;
+
 }
