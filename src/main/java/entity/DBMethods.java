@@ -4,47 +4,286 @@
  * and open the template in the editor.
  */
 package entity;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import utility.AlertErrorUtility;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
 public class DBMethods {
 
     private static SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-//
-//    // Status: Ready
-//    /* FACILITY */
-//    /* Method to CREATE a facility in the database */
-//    public static Integer addFacility(String name, Integer minAge) {
-//        Session session = sessionFactory.openSession();
-//        Transaction tx = null;
-//        Integer facilityID = null;
-//
-//        try {
-//            tx = session.beginTransaction();
-//            Facility facility = new Facility(name, minAge);
-//            facilityID = (Integer) session.save(facility);
-//            tx.commit();
-//        } catch (HibernateException e) {
-//            if (tx != null) {
-//                tx.rollback();
-//            }
-//            e.printStackTrace();
-//        } finally {
-//            session.close();
-//        }
-//        return facilityID;
-//    }
+
+    // Status: Needs testing
+    /* APARTMENT OWNER */
+    /* Method to CREATE an APARTMENT OWNER in the database*/
+    public static Integer addApartmentOwner(String name, String egn) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        Integer apartmentOwnerID = null;
+
+        try {
+            tx = session.beginTransaction();
+            ApartmentOwner apartmentOwner = new ApartmentOwner(name, egn);
+            apartmentOwnerID = (Integer) session.save(apartmentOwner);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return apartmentOwnerID;
+    }
+
+    // Status: Needs testing
+    /* APARTMENT OWNER */
+    /* Method to RETURN an APARTMENT OWNER from the database */
+    public static ApartmentOwner getApartmentOwner(Integer apartmentOwnerID) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            ApartmentOwner apartmentOwner = session.get(ApartmentOwner.class, apartmentOwnerID);
+            tx.commit();
+            return apartmentOwner;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
+    // Status: TODO
+    /* APARTMENT OWNER */
+    /* Method to UPDATE an APARTMENT OWNER in the database*/
+
+    // Status: Needs testing
+    /* APARTMENT OWNER */
+    /* Method to DELETE an APARTMENT OWNER from the database*/
+    public static void deleteApartmentOwner(Integer idApartmentOwner) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            ApartmentOwner apartmentOwner = session.get(ApartmentOwner.class, idApartmentOwner);
+            session.delete(apartmentOwner);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+    // Status: Needs testing
+    /* BUILDING */
+    /* Method to CREATE a BUILDING in the database */
+    public static Integer addBuilding(String name, String address,
+                                   Integer floors, Integer apartmentsCount, Double area, Integer sharedParts) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        Integer buildingID = null;
+
+        try {
+            tx = session.beginTransaction();
+            Building building = new Building(name, address, floors, apartmentsCount, area, sharedParts);
+            buildingID = (Integer) session.save(building);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return buildingID;
+    }
+
+    // Status: Needs testing
+    /* BUILDING */
+    /* Method to RETURN a BUILDING from the database */
+    public static Building getBuilding(Integer buildingID) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            Building building = session.get(Building.class, buildingID);
+            tx.commit();
+            return building;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
+    // Status: TODO
+    /* BUILDING */
+    /* Method to UPDATE a building in the database*/
+
+    //Status: Needs testing
+    /* BUILDING */
+    /* Method to DELETE a BUILDING from the database*/
+    public static void deleteBuilding(Integer idBuilding) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            Building building = session.get(Building.class, idBuilding);
+            session.delete(building);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+    // Status: Needs testing
+    /* COMPANY */
+    /* Method to CREATE a COMPANY in the database*/
+    public static Integer addCompany(String name) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        Integer companyID = null;
+
+        try {
+            tx = session.beginTransaction();
+            Company company = new Company(name);
+            companyID = (Integer) session.save(companyID);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return companyID;
+    }
+
+    // Status: TODO
+    /* COMPANY */
+    /* Method to UPDATE a COMPANY in the database*/
+
+    // Status: Needs testing
+    /* COMPANY */
+    /* Method to DELETE a COMPANY from the database*/
+    public static void deleteCompany(Integer idCompany) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            Company company = session.get(Company.class, idCompany);
+            session.delete(company);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+    // Status: Needs testing
+    /* EMPLOYEE */
+    /* Method to CREATE an EMPLOYEE in the database*/
+    public static Integer addEmployee(String name, String egn) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+        Integer employeeID = null;
+
+        try {
+            tx = session.beginTransaction();
+            Employee employee = new Employee(name, egn);
+            employeeID = (Integer) session.save(employee);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return employeeID;
+    }
+
+    // Status: Needs testing
+    /* EMPLOYEE */
+    /* Method to RETURN an EMPLOYEE from the database */
+    public static Employee getEmployee(Integer employeeID) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            Employee employee = session.get(Employee.class, employeeID);
+            tx.commit();
+            return employee;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
+    // Status: TODO
+    /* EMPLOYEE */
+    /* Method to UPDATE an EMPLOYEE in the database*/
+
+    // Status: Needs testing
+    /* EMPLOYEE */
+    /* Method to DELETE an EMPLOYEE from the database*/
+    public static void deleteEmployee(Integer idEmployee) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            Employee employee = session.get(Employee.class, idEmployee);
+            session.delete(employee);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
 //
 //    // Status: Ready for one
 //    // Add multiple adding
@@ -71,6 +310,50 @@ public class DBMethods {
 //            session.close();
 //        }
 //    }
+//    // Status: Ready
+//    /* FACILITY */
+//    /* Method to RETURN a facility from the database */
+//    public static Facility getFacility(Integer facilityID) {
+//        Session session = sessionFactory.openSession();
+//        Transaction tx = null;
+//
+//        try {
+//            tx = session.beginTransaction();
+//            Facility facility = session.get(Facility.class, facilityID);
+//            tx.commit();
+//            return facility;
+//        } catch (HibernateException e) {
+//            if (tx != null) {
+//                tx.rollback();
+//            }
+//            e.printStackTrace();
+//        } finally {
+//            session.close();
+//        }
+//        return null;
+//    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //
 //    // Status: Ready
 //    /* FACILITY */
@@ -602,4 +885,3 @@ public class DBMethods {
 //            session.close();
 //        }
 //    }
-}
