@@ -28,19 +28,16 @@ public class Company implements java.io.Serializable {
      *
      */
 
-    public Company() {
-
-    }
-
-    public Company(String name) {
-        this.name = name;
-    }
-
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "idCompany", unique = true, nullable = false)
     public Integer getIdCompany() {
         return idCompany;
+    }
+
+    @OneToMany(mappedBy = "company")
+    public Set<Employee> getEmployees() {
+        return employees;
     }
 
     /*
@@ -62,19 +59,23 @@ public class Company implements java.io.Serializable {
         this.name = name;
     }
 
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
+    }
+
+
     /*
      *
      * Constructors
      *
      */
 
-    @OneToMany(mappedBy = "company")
-    public Set<Employee> getEmployees() {
-        return employees;
+    public Company() {
+
     }
 
-    public void setEmployees(Set<Employee> employees) {
-        this.employees = employees;
+    public Company(String name) {
+        this.name = name;
     }
 
     /*

@@ -28,16 +28,6 @@ public class ApartmentOwner implements java.io.Serializable {
      *
      */
 
-    public ApartmentOwner() {
-
-    }
-
-    public ApartmentOwner(String name, String egn) {
-        this.idApartmentOwner = idApartmentOwner;
-        this.name = name;
-        this.egn = egn;
-    }
-
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "idApartmentOwner", unique = true, nullable = false)
@@ -45,8 +35,19 @@ public class ApartmentOwner implements java.io.Serializable {
         return idApartmentOwner;
     }
 
-    public void setIdApartmentOwner(Integer idApartmentOwner) {
-        this.idApartmentOwner = idApartmentOwner;
+    @Column(name = "name", length = 25)
+    public String getName() {
+        return name;
+    }
+
+    @Column(name = "egn", length = 10)
+    public String getEgn() {
+        return egn;
+    }
+
+    @OneToOne(mappedBy = "apartment_owner")
+    public Building getBuilding() {
+        return building;
     }
 
     /*
@@ -55,22 +56,20 @@ public class ApartmentOwner implements java.io.Serializable {
      *
      */
 
-    @Column(name = "name", length = 25)
-    public String getName() {
-        return name;
+    public void setIdApartmentOwner(Integer idApartmentOwner) {
+        this.idApartmentOwner = idApartmentOwner;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    @Column(name = "egn", length = 10)
-    public String getEgn() {
-        return egn;
-    }
-
     public void setEgn(String egn) {
         this.egn = egn;
+    }
+
+    public void setBuilding(Building building) {
+        this.building = building;
     }
 
     /*
@@ -79,13 +78,14 @@ public class ApartmentOwner implements java.io.Serializable {
      *
      */
 
-    @OneToOne(mappedBy = "apartment_owner")
-    public Building getBuilding() {
-        return building;
+    public ApartmentOwner() {
+
     }
 
-    public void setBuilding(Building building) {
-        this.building = building;
+    public ApartmentOwner(String name, String egn) {
+        this.idApartmentOwner = idApartmentOwner;
+        this.name = name;
+        this.egn = egn;
     }
 
     /*

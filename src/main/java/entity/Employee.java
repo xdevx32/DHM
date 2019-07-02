@@ -26,6 +26,59 @@ public class Employee {
      *
      */
 
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "idEmployee", unique = true, nullable = false)
+    public Integer getIdEmployee() {
+        return idEmployee;
+    }
+
+    @Column(name = "name", length = 25)
+    public String getName() {
+        return name;
+    }
+
+    @Column(name = "egn", length = 10)
+    public String getEgn() {
+        return egn;
+    }
+
+
+    @ManyToOne
+    @JoinColumn(name = "idCompany", nullable = false)
+    public Company getCompany() {
+        return company;
+    }
+
+    /*
+     *
+     * Setters
+     *
+     */
+
+    public void setIdEmployee(Integer idEmployee) {
+        this.idEmployee = idEmployee;
+    }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEgn(String egn) {
+        this.egn = egn;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    /*
+     *
+     * Constructors
+     *
+     */
+
     public Employee() {
 
     }
@@ -36,56 +89,6 @@ public class Employee {
         this.egn = egn;
     }
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "idEmployee", unique = true, nullable = false)
-    public Integer getIdEmployee() {
-        return idEmployee;
-    }
-
-    public void setIdEmployee(Integer idEmployee) {
-        this.idEmployee = idEmployee;
-    }
-
-    /*
-     *
-     * Setters
-     *
-     */
-
-    @Column(name = "name", length = 25)
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Column(name = "egn", length = 10)
-    public String getEgn() {
-        return egn;
-    }
-
-    public void setEgn(String egn) {
-        this.egn = egn;
-    }
-
-    /*
-     *
-     * Constructors
-     *
-     */
-
-    @ManyToOne
-    @JoinColumn(name = "idCompany", nullable = false)
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
 
     /*
      *
