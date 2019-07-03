@@ -225,7 +225,7 @@ public class DBMethods {
         try {
             tx = session.beginTransaction();
             Company company = new Company(name);
-            companyID = (Integer) session.save(companyID);
+            companyID = (Integer) session.save(company);
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) {
@@ -236,6 +236,29 @@ public class DBMethods {
             session.close();
         }
         return companyID;
+    }
+
+    // Status: Needs testing
+    /* COMPANY */
+    /* Method to RETURN a COMPANY from the database */
+    public static Company getCompany(Integer companyID) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            Company company = session.get(Company.class, companyID);
+            tx.commit();
+            return company;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
     }
 
     // Status: TODO
@@ -262,6 +285,30 @@ public class DBMethods {
         } finally {
             session.close();
         }
+    }
+
+    //Status: Needs testing
+    /* COMPANY */
+    /* Method to GET all COMPANIES from the database*/
+    public static ObservableList<Company> getCompanies() {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            List companies = session.createQuery("FROM " + Company.class.getSimpleName()).list();
+            ObservableList<Company> companyObservableList = FXCollections.observableArrayList(companies);
+            tx.commit();
+            return companyObservableList;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
     }
 
     // Status: Needs testing
@@ -335,6 +382,30 @@ public class DBMethods {
         } finally {
             session.close();
         }
+    }
+
+    //Status: Needs testing
+    /* EMPLOYEE */
+    /* Method to GET all EMPLOYEES from the database*/
+    public static ObservableList<Employee> getEmployees() {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            List employees = session.createQuery("FROM " + Employee.class.getSimpleName()).list();
+            ObservableList<Employee> employeeObservableList = FXCollections.observableArrayList(employees);
+            tx.commit();
+            return employeeObservableList;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
     }
 
 //

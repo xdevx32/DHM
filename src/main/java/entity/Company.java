@@ -35,6 +35,11 @@ public class Company implements java.io.Serializable {
         return idCompany;
     }
 
+    @Column(name = "name", length = 25)
+    public String getName() {
+        return name;
+    }
+
     @OneToMany(mappedBy = "company")
     public Set<Employee> getEmployees() {
         return employees;
@@ -48,11 +53,6 @@ public class Company implements java.io.Serializable {
 
     public void setIdCompany(Integer idCompany) {
         this.idCompany = idCompany;
-    }
-
-    @Column(name = "name", length = 25)
-    public String getName() {
-        return name;
     }
 
     public void setName(String name) {

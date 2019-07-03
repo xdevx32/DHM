@@ -4,7 +4,9 @@ import javax.persistence.*;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-public class Employee {
+@Entity
+@Table(name = "employee")
+public class Employee implements java.io.Serializable {
 
     /*
      *
@@ -44,7 +46,7 @@ public class Employee {
     }
 
     @ManyToOne
-    @JoinColumn(name = "idCompany", nullable = false)
+    @JoinColumn(name = "idCompany", nullable = true)
     public Company getCompany() {
         return company;
     }
