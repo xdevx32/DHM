@@ -77,8 +77,8 @@ public class Building implements java.io.Serializable{
         return sharedParts;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "idBuilding", nullable = false)
+    @OneToMany
+    @JoinColumn(name = "idBuilding", nullable = true)
     public Set<ApartmentOwner> getApartmentOwners() {
         return apartmentOwners;
     }
@@ -101,7 +101,7 @@ public class Building implements java.io.Serializable{
         this.address = address;
     }
 
-    public void setApartmentOwner(Set<ApartmentOwner> apartmentOwner) {
+    public void setApartmentOwners(Set<ApartmentOwner> apartmentOwners) {
         this.apartmentOwners = apartmentOwners;
     }
 

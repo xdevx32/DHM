@@ -4,10 +4,14 @@
  * and open the template in the editor.
  */
 package entity;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+
+import java.util.List;
 
 
 public class DBMethods {
@@ -87,6 +91,30 @@ public class DBMethods {
         }
     }
 
+    //Status: Needs testing
+    /* APARTMENT OWNER */
+    /* Method to GET all APARTMENT OWNERS from the database*/
+    public static ObservableList<ApartmentOwner> getApartmentOwners() {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            List apartmentOwners = session.createQuery("FROM " + ApartmentOwner.class.getSimpleName()).list();
+            ObservableList<ApartmentOwner> apartmentOwnerObservableList = FXCollections.observableArrayList(apartmentOwners);
+            tx.commit();
+            return apartmentOwnerObservableList;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
     // Status: Needs testing
     /* BUILDING */
     /* Method to CREATE a BUILDING in the database */
@@ -160,6 +188,31 @@ public class DBMethods {
             session.close();
         }
     }
+
+    //Status: Needs testing
+    /* BUILDING */
+    /* Method to GET all BUILDINGS from the database*/
+    public static ObservableList<Building> getBuildings() {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            List buildings = session.createQuery("FROM " + Building.class.getSimpleName()).list();
+            ObservableList<Building> buildingObservableList = FXCollections.observableArrayList(buildings);
+            tx.commit();
+            return buildingObservableList;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
 
     // Status: Needs testing
     /* COMPANY */

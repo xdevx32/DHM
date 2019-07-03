@@ -45,7 +45,7 @@ public class ApartmentOwner implements java.io.Serializable {
         return egn;
     }
 
-    @OneToMany(mappedBy = "apartment_owner")
+    @Transient
     public Building getBuilding() {
         return building;
     }
