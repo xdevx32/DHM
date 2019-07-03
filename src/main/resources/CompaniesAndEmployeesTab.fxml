@@ -60,7 +60,7 @@
             </GridPane>
          </children>
       </FlowPane>
-      <Label layoutX="500.0" layoutY="14.0" prefHeight="17.0" prefWidth="208.0" text="Работници">
+      <Label layoutX="500.0" layoutY="14.0" prefHeight="17.0" prefWidth="208.0" text="Служители">
          <font>
             <Font size="18.0" />
          </font>
