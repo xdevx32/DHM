@@ -44,6 +44,7 @@ public class CompaniesAndEmployeesTabController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Добавя данни в таблицата за компании
         final ObservableList<Company> companyData = FXCollections.observableArrayList(DBMethods.getCompanies());
 
         companyIdColumn.setCellValueFactory(new PropertyValueFactory<>("idCompany"));
@@ -51,6 +52,7 @@ public class CompaniesAndEmployeesTabController implements Initializable {
 
         companyTableView.setItems(companyData);
 
+        // Добавя данни в таблицата за работници
         final ObservableList<Employee> employeeData = FXCollections.observableArrayList(DBMethods.getEmployees());
 
         employeeNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -58,6 +60,10 @@ public class CompaniesAndEmployeesTabController implements Initializable {
 
         employeeTableView.setItems(employeeData);
 
+        // Добавя данни в падащото меню за избиране на компания в която работи служител
+        selectCompanyComboBox.getItems().clear();
+
+        selectCompanyComboBox.getItems().addAll(companyData);
     }
 
     public void saveEmployeeData(ActionEvent actionEvent) {
@@ -79,6 +85,11 @@ public class CompaniesAndEmployeesTabController implements Initializable {
     }
 
     public void deleteEmployeeData(ActionEvent actionEvent) {
+        Employee selectedObject = employeeTableView.getSelectionModel().getSelectedItem();
+        if (selectedObject != null) {
+            employeeTableView.getItems().removeAll(selectedObject);
+            DBMethods.deleteEmployee(selectedObject.getIdEmployee());
+        }
     }
 
     public void saveCompanyData(ActionEvent actionEvent) {
@@ -97,5 +108,10 @@ public class CompaniesAndEmployeesTabController implements Initializable {
     }
 
     public void deleteCompanyData(ActionEvent actionEvent) {
+        Company selectedObject = companyTableView.getSelectionModel().getSelectedItem();
+        if (selectedObject != null) {
+            companyTableView.getItems().removeAll(selectedObject);
+            DBMethods.deleteCompany(selectedObject.getIdCompany());
+        }
     }
 }
