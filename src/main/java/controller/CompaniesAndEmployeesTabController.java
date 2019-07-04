@@ -29,7 +29,7 @@ public class CompaniesAndEmployeesTabController implements Initializable {
 
     public TableColumn<Object, Object> employeeEgnColumn;
 
-    public TableColumn employeeCompanyColumn;
+    public TableColumn<Object, Object> employeeCompanyColumn;
 
     public ComboBox<Company> selectCompanyComboBox;
 
@@ -56,6 +56,7 @@ public class CompaniesAndEmployeesTabController implements Initializable {
 
         employeeNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         employeeEgnColumn.setCellValueFactory(new PropertyValueFactory<>("egn"));
+        employeeCompanyColumn.setCellValueFactory(new PropertyValueFactory<>("company"));
 
         employeeTableView.setItems(employeeData);
 
@@ -71,8 +72,9 @@ public class CompaniesAndEmployeesTabController implements Initializable {
 
             String employeeName = employeeNameTextField.getText();
             String employeeEgn = employeeEgnTextField.getText();
+            Company employeeCompany = selectCompanyComboBox.getValue();
 
-            Integer employeeId = DBMethods.addEmployee(employeeName, employeeEgn);
+            Integer employeeId = DBMethods.addEmployee(employeeName, employeeEgn, employeeCompany);
             Employee employeeObject = DBMethods.getEmployee(employeeId);
 
             employeeTableView.getItems().add(employeeObject);

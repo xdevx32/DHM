@@ -314,14 +314,14 @@ public class DBMethods {
     // Status: Needs testing
     /* EMPLOYEE */
     /* Method to CREATE an EMPLOYEE in the database*/
-    public static Integer addEmployee(String name, String egn) {
+    public static Integer addEmployee(String name, String egn, Company company) {
         Session session = sessionFactory.openSession();
         Transaction tx = null;
         Integer employeeID = null;
 
         try {
             tx = session.beginTransaction();
-            Employee employee = new Employee(name, egn);
+            Employee employee = new Employee(name, egn, company);
             employeeID = (Integer) session.save(employee);
             tx.commit();
         } catch (HibernateException e) {

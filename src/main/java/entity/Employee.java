@@ -83,10 +83,11 @@ public class Employee implements java.io.Serializable {
 
     }
 
-    public Employee(String name, String egn) {
+    public Employee(String name, String egn, Company company) {
         this.idEmployee = idEmployee;
         this.name = name;
         this.egn = egn;
+        this.company = company;
     }
 
     /*
