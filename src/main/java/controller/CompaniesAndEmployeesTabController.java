@@ -1,6 +1,5 @@
 package controller;
 
-import entity.ApartmentOwner;
 import entity.Company;
 import entity.DBMethods;
 import entity.Employee;
@@ -32,7 +31,7 @@ public class CompaniesAndEmployeesTabController implements Initializable {
 
     public TableColumn employeeCompanyColumn;
 
-    public ComboBox selectCompanyComboBox;
+    public ComboBox<Company> selectCompanyComboBox;
 
     public TableColumn<Object, Object> companyIdColumn;
 
