@@ -1,6 +1,6 @@
 # DHM
 
-University project - Amusement Park Manager
+University project - Digital House Manager
 
 Using MySQL Database, Hibernate ORM and Maven dependencies.
 
