@@ -43,8 +43,8 @@ Contributor(s):
     <session-factory>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/dhm_db?useUnicode=yes&amp;characterEncoding=UTF-8&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC</property>
-        <property name="connection.username">secret</property>
-        <property name="connection.password">secret</property>
+        <property name="connection.username">secret, a real secret. can't tell</property>
+        <property name="connection.password">secret, a real secret. can't tell</property>
         <property name="connection.pool_size">1</property>
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="current_session_context_class">thread</property>
