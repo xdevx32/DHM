@@ -2,6 +2,9 @@ package entity;
 
 import javax.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -21,6 +24,8 @@ public class Employee implements java.io.Serializable {
     private String egn;
 
     private Company company;
+
+    private Set<Building> buildingsThatTheEmployeeMaintains = new HashSet<Building>(0);
 
     /*
      *
@@ -51,6 +56,11 @@ public class Employee implements java.io.Serializable {
         return company;
     }
 
+    @Transient
+    public Set<Building> getBuildingsThatTheEmployeeMaintains() {
+        return buildingsThatTheEmployeeMaintains;
+    }
+
     /*
      *
      * Setters
@@ -71,6 +81,10 @@ public class Employee implements java.io.Serializable {
 
     public void setCompany(Company company) {
         this.company = company;
+    }
+
+    public void setBuildingsThatTheEmployeeMaintains(Set<Building> buildingsThatTheEmployeeMaintains) {
+        this.buildingsThatTheEmployeeMaintains = buildingsThatTheEmployeeMaintains;
     }
 
     /*
@@ -95,6 +109,10 @@ public class Employee implements java.io.Serializable {
      *  Additional
      *
      */
+
+    public void setSingleBuilding(Building building) {
+        this.buildingsThatTheEmployeeMaintains.add(building);
+    }
 
     @Override
     public String toString() {

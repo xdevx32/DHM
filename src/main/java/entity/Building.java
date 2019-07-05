@@ -33,6 +33,10 @@ public class Building implements java.io.Serializable{
 
     private Set<ApartmentOwner> apartmentOwners = new HashSet<ApartmentOwner>(0);
 
+    private Set<Employee> employeesWhoMaintainTheBuilding = new HashSet<Employee>(0);
+
+    private Company company;
+
     /*
      *
      *  Getters with annotations
@@ -66,7 +70,6 @@ public class Building implements java.io.Serializable{
         return apartmentsCount;
     }
 
-
     @Column(name = "area")
     public Double getArea() {
         return area;
@@ -81,6 +84,17 @@ public class Building implements java.io.Serializable{
     @JoinColumn(name = "idBuilding", nullable = true)
     public Set<ApartmentOwner> getApartmentOwners() {
         return apartmentOwners;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "building_employee", joinColumns = {@JoinColumn(name = "idBuilding")}, inverseJoinColumns = {@JoinColumn(name = "idEmployee")})
+    public Set<Employee> getEmployeesWhoMaintainTheBuilding() {
+        return employeesWhoMaintainTheBuilding;
+    }
+
+    @ManyToOne
+    public Company getCompany() {
+        return company;
     }
 
     /*
@@ -119,6 +133,14 @@ public class Building implements java.io.Serializable{
 
     public void setSharedParts(Integer sharedParts) {
         this.sharedParts = sharedParts;
+    }
+
+    public void setEmployeesWhoMaintainTheBuilding(Set<Employee> employeesWhoMaintainTheBuilding) {
+        this.employeesWhoMaintainTheBuilding = employeesWhoMaintainTheBuilding;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     /*

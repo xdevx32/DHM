@@ -22,6 +22,8 @@ public class Company implements java.io.Serializable {
 
     private Set<Employee> employees = new HashSet<Employee>(0);
 
+    private Set<Building> buildings = new HashSet<Building>(0);
+
     /*
      *
      * Getters with annotations
@@ -45,6 +47,14 @@ public class Company implements java.io.Serializable {
         return employees;
     }
 
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "idCompany", nullable = true)
+
+    @OneToMany(mappedBy = "company")
+    public Set<Building> getBuildings() {
+        return buildings;
+    }
+
     /*
      *
      * Setters
@@ -63,6 +73,9 @@ public class Company implements java.io.Serializable {
         this.employees = employees;
     }
 
+    public void setBuildings(Set<Building> buildings) {
+        this.buildings = buildings;
+    }
 
     /*
      *
@@ -83,6 +96,10 @@ public class Company implements java.io.Serializable {
      *  Additional
      *
      */
+
+    public void setSingleBuilding(Building building) {
+        this.buildings.add(building);
+    }
 
     @Override
     public String toString() {
