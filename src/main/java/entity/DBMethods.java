@@ -191,6 +191,25 @@ public class DBMethods {
         }
     }
 
+    public static void addTaxToBuilding(Building building, Double tax){
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+
+            building.setTax(tax);
+            session.update(building);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
     //Status: Needs testing
     /* BUILDING */
     /* Method to GET all BUILDINGS from the database*/

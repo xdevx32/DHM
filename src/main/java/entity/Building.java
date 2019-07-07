@@ -37,6 +37,8 @@ public class Building implements java.io.Serializable{
 
     private Company company;
 
+    private Double tax;
+
     /*
      *
      *  Getters with annotations
@@ -87,13 +89,18 @@ public class Building implements java.io.Serializable{
     }
 
     @Transient
-    public Set<Employee> employees() {
+    public Set<Employee> getEmployees() {
         return employees;
     }
 
     @ManyToOne
     public Company getCompany() {
         return company;
+    }
+
+    @Column(name = "tax")
+    public Double getTax() {
+        return tax;
     }
 
     /*
@@ -140,6 +147,10 @@ public class Building implements java.io.Serializable{
 
     public void setCompany(Company company) {
         this.company = company;
+    }
+
+    public void setTax(Double tax) {
+        this.tax = tax;
     }
 
     /*

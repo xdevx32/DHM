@@ -8,18 +8,28 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
 import utility.AlertErrorUtility;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class BuildingsTabController implements Initializable {
 
     private Model model = Model.getInstance();
+
+    public TextField taxTextField;
+
+    public ImageView taxInfoImg;
+
+    public Button saveOrChangeTaxButton;
+
+    public TableColumn buildingTaxColumn;
 
     public TableView<ApartmentOwner> apartmentOwnerTableView;
 
@@ -61,7 +71,7 @@ public class BuildingsTabController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        //TODO or Not TODO
         final ObservableList<ApartmentOwner> apartmentOwnerData = FXCollections.observableArrayList(DBMethods.getApartmentOwners());
 
         apartmentOwnerNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -78,8 +88,26 @@ public class BuildingsTabController implements Initializable {
         buildingApartmentsCountColumn.setCellValueFactory(new PropertyValueFactory<>("apartmentsCount"));
         buildingAreaColumn.setCellValueFactory(new PropertyValueFactory<>("area"));
         buildingSharedPartsColumn.setCellValueFactory(new PropertyValueFactory<>("sharedParts"));
+        buildingTaxColumn.setCellValueFactory(new PropertyValueFactory<>("tax"));
 
         buildingTableView.setItems(buildingData);
+
+
+        File file = new File("src/main/resources/info-black.png");
+        Image image = new Image(file.toURI().toString());
+        taxInfoImg.setImage(image);
+
+        final Tooltip tooltip = new Tooltip();
+        tooltip.setText(
+                "1. Изберете сграда от таблицата\n" +
+                "2. Въведете сумата на такса\n" +
+                "3. Използвайте бутона за да запазите или обновите данните."
+        );
+        tooltip.setFont(new Font(12));
+        tooltip.setWidth(6);
+        tooltip.setAutoHide(false);
+
+        Tooltip.install(taxInfoImg, tooltip);
     }
 
     public void saveBuildingData(ActionEvent actionEvent) {
@@ -148,5 +176,24 @@ public class BuildingsTabController implements Initializable {
             apartmentOwnerTableView.getItems().removeAll(selectedObject);
             DBMethods.deleteApartmentOwner(selectedObject.getIdApartmentOwner());
         }
+    }
+
+    public void saveOrChangeTaxButton(ActionEvent actionEvent) {
+        if ((taxTextField.getText() != null && !taxTextField.getText().isEmpty())) {
+
+            Double tax = Double.parseDouble(taxTextField.getText());
+
+            Building selectedBuilding = buildingTableView.getSelectionModel().getSelectedItem();
+
+            selectedBuilding.setTax(tax);
+
+            DBMethods.addTaxToBuilding(selectedBuilding, tax);
+
+            model.setBuildingsObservableList(DBMethods.getBuildings());
+
+        } else {
+            AlertErrorUtility.showCustomAlert("Неправилно въведени данни!");
+        }
+
     }
 }
