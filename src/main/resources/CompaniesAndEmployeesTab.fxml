@@ -27,7 +27,7 @@
             </TableView>
          </children>
       </FlowPane>
-      <FlowPane layoutX="16.0" layoutY="480.0" prefHeight="82.0" prefWidth="413.0">
+      <FlowPane layoutX="16.0" layoutY="505.0" prefHeight="82.0" prefWidth="413.0">
          <children>
             <GridPane prefHeight="80.0" prefWidth="413.0">
               <columnConstraints>
@@ -63,7 +63,7 @@
             <ListView fx:id="buildingsForAnEmployeeListView" prefHeight="67.0" prefWidth="466.0" />
          </children>
       </FlowPane>
-      <FlowPane alignment="TOP_CENTER" layoutX="516.0" layoutY="391.0" prefHeight="220.0" prefWidth="450.0">
+      <FlowPane alignment="TOP_CENTER" layoutX="516.0" layoutY="421.0" prefHeight="220.0" prefWidth="450.0">
          <children>
             <GridPane hgap="10.0" prefHeight="228.0" prefWidth="450.0" vgap="10.0">
                <children>
@@ -112,6 +112,16 @@
          </font>
       </Label>
       <Label layoutX="500.0" layoutY="290.0" prefHeight="17.0" prefWidth="208.0" text="Сгради за служител">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="16.0" layoutY="476.0" text="Добавяне на компания">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="503.0" layoutY="398.0" text="Добавяне на служител">
          <font>
             <Font size="18.0" />
          </font>

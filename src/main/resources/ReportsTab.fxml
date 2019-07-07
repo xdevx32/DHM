@@ -32,28 +32,37 @@
                     <children>
                         <Pane prefHeight="74.0" prefWidth="499.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;">
                             <children>
-                                <Label alignment="CENTER_RIGHT" prefHeight="84.0" prefWidth="186.0" text="Брой обслужвани сгради">
+                                <Label alignment="CENTER_RIGHT" prefHeight="64.0" prefWidth="499.0" text="Брой обслужвани сгради">
                                     <padding>
                                         <Insets left="1.0" right="7.0" />
                                     </padding>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
                                 </Label>
                             </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" GridPane.rowIndex="1">
                             <children>
-                                <Label alignment="CENTER_RIGHT" prefHeight="96.0" prefWidth="143.0" text="Брой апартаменти">
+                                <Label alignment="CENTER_RIGHT" prefHeight="78.0" prefWidth="499.0" text="Брой апартаменти">
                                     <padding>
                                         <Insets left="1.0" right="7.0" />
                                     </padding>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
                                 </Label>
                             </children>
                         </Pane>
                         <Pane prefHeight="132.0" prefWidth="499.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" GridPane.rowIndex="6">
                             <children>
-                                <Label alignment="CENTER_RIGHT" prefHeight="113.0" prefWidth="115.0" text="Обнови данни">
+                                <Label alignment="CENTER_RIGHT" prefHeight="120.0" prefWidth="499.0" text="Обнови данни">
                                     <padding>
                                         <Insets left="1.0" right="7.0" />
                                     </padding>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
                                 </Label>
                             </children>
                         </Pane>
@@ -82,19 +91,25 @@
                         </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" GridPane.rowIndex="3">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="140.0" prefWidth="134.0" text="Суми за плащане">
+                        <Label alignment="CENTER_RIGHT" prefHeight="121.0" prefWidth="499.0" text="Суми за плащане">
                            <padding>
                               <Insets left="1.0" right="7.0" />
                            </padding>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
                         </Label>
                      </children>
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" GridPane.rowIndex="4">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="140.0" prefWidth="106.0" text="Платени суми">
+                        <Label alignment="CENTER_RIGHT" prefHeight="121.0" prefWidth="499.0" text="Платени суми" textAlignment="RIGHT">
                            <padding>
                               <Insets left="1.0" right="7.0" />
                            </padding>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
                         </Label>
                      </children>
                   </Pane>
@@ -118,10 +133,13 @@
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" GridPane.rowIndex="2">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="140.0" prefWidth="115.0" text="Брой живущи">
+                        <Label alignment="CENTER_RIGHT" prefHeight="120.0" prefWidth="499.0" text="Брой живущи">
                            <padding>
                               <Insets left="1.0" right="7.0" />
                            </padding>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
                         </Label>
                      </children>
                   </Pane>
@@ -136,10 +154,13 @@
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid;" GridPane.rowIndex="5">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="120.0" prefWidth="159.0" text="Добави още справки">
+                        <Label alignment="CENTER_RIGHT" prefHeight="120.0" prefWidth="499.0" text="Добави още справки">
                            <padding>
                               <Insets left="1.0" right="7.0" />
                            </padding>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
                         </Label>
                      </children>
                   </Pane>

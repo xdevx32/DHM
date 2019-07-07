@@ -34,7 +34,7 @@
                 </TableView>
             </children>
         </FlowPane>
-        <FlowPane alignment="TOP_CENTER" layoutX="25.0" layoutY="388.0" prefHeight="242.0" prefWidth="400.0">
+        <FlowPane alignment="TOP_CENTER" layoutX="25.0" layoutY="409.0" prefHeight="242.0" prefWidth="400.0">
             <children>
                 <GridPane hgap="10.0" prefHeight="241.0" prefWidth="398.0" vgap="10.0">
                     <children>
@@ -159,5 +159,15 @@
          <image>
             <Image url="@info-black.png" />
          </image></ImageView>
+      <Label layoutX="28.0" layoutY="388.0" text="Добавяне на сграда">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="751.0" layoutY="388.0" text="Добавяне на живущ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
