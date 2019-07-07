@@ -33,7 +33,7 @@ public class Building implements java.io.Serializable{
 
     private Set<ApartmentOwner> apartmentOwners = new HashSet<ApartmentOwner>(0);
 
-    private Set<Employee> employeesWhoMaintainTheBuilding = new HashSet<Employee>(0);
+    private Set<Employee> employees = new HashSet<Employee>(0);
 
     private Company company;
 
@@ -86,10 +86,9 @@ public class Building implements java.io.Serializable{
         return apartmentOwners;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "building_employee", joinColumns = {@JoinColumn(name = "idBuilding")}, inverseJoinColumns = {@JoinColumn(name = "idEmployee")})
-    public Set<Employee> getEmployeesWhoMaintainTheBuilding() {
-        return employeesWhoMaintainTheBuilding;
+    @Transient
+    public Set<Employee> employees() {
+        return employees;
     }
 
     @ManyToOne
@@ -135,8 +134,8 @@ public class Building implements java.io.Serializable{
         this.sharedParts = sharedParts;
     }
 
-    public void setEmployeesWhoMaintainTheBuilding(Set<Employee> employeesWhoMaintainTheBuilding) {
-        this.employeesWhoMaintainTheBuilding = employeesWhoMaintainTheBuilding;
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
     }
 
     public void setCompany(Company company) {
@@ -169,9 +168,14 @@ public class Building implements java.io.Serializable{
      *
      */
 
+    public void setSingleEmployee(Employee employee) {
+        employees.add(employee);
+    }
+
     @Override
     public String toString() {
         return name;
     }
+
 }
 

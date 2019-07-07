@@ -25,7 +25,7 @@ public class Employee implements java.io.Serializable {
 
     private Company company;
 
-    private Set<Building> buildingsThatTheEmployeeMaintains = new HashSet<Building>(0);
+    private Set<Building> buildings = new HashSet<Building>(0);
 
     /*
      *
@@ -56,9 +56,10 @@ public class Employee implements java.io.Serializable {
         return company;
     }
 
-    @Transient
-    public Set<Building> getBuildingsThatTheEmployeeMaintains() {
-        return buildingsThatTheEmployeeMaintains;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "employee_building", joinColumns = {@JoinColumn(name = "idEmployee")}, inverseJoinColumns = {@JoinColumn(name = "idBuilding")})
+    public Set<Building> getBuildings() {
+        return buildings;
     }
 
     /*
@@ -83,8 +84,8 @@ public class Employee implements java.io.Serializable {
         this.company = company;
     }
 
-    public void setBuildingsThatTheEmployeeMaintains(Set<Building> buildingsThatTheEmployeeMaintains) {
-        this.buildingsThatTheEmployeeMaintains = buildingsThatTheEmployeeMaintains;
+    public void setBuildings(Set<Building> buildings) {
+        this.buildings = buildings;
     }
 
     /*
@@ -97,11 +98,12 @@ public class Employee implements java.io.Serializable {
 
     }
 
-    public Employee(String name, String egn, Company company) {
+    public Employee(String name, String egn, Company company, Building building) {
         this.idEmployee = idEmployee;
         this.name = name;
         this.egn = egn;
         this.company = company;
+        this.buildings.add(building);
     }
 
     /*
@@ -111,7 +113,7 @@ public class Employee implements java.io.Serializable {
      */
 
     public void setSingleBuilding(Building building) {
-        this.buildingsThatTheEmployeeMaintains.add(building);
+        this.buildings.add(building);
     }
 
     @Override

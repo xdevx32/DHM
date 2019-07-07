@@ -1,23 +1,23 @@
 package controller;
 
-import entity.Company;
-import entity.DBMethods;
-import entity.Employee;
+import entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import utility.AlertErrorUtility;
 
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class CompaniesAndEmployeesTabController implements Initializable {
+
+    public ListView<Building> buildingsForAnEmployeeListView;
+
+    private Model model = Model.getInstance();
 
     public TextField employeeNameTextField;
 
@@ -41,15 +41,17 @@ public class CompaniesAndEmployeesTabController implements Initializable {
 
     public TextField companyNameTextField;
 
+    public ComboBox<Building> selectBuildingComboBox;
+
+    public Button addBuildingToAnEmployeeButton;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Добавя данни в таблицата за компании
-        final ObservableList<Company> companyData = FXCollections.observableArrayList(DBMethods.getCompanies());
-
         companyIdColumn.setCellValueFactory(new PropertyValueFactory<>("idCompany"));
         companyNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        companyTableView.setItems(companyData);
+        companyTableView.setItems(model.getCompaniesObservableList());
 
         // Добавя данни в таблицата за работници
         final ObservableList<Employee> employeeData = FXCollections.observableArrayList(DBMethods.getEmployees());
@@ -61,9 +63,24 @@ public class CompaniesAndEmployeesTabController implements Initializable {
         employeeTableView.setItems(employeeData);
 
         // Добавя данни в падащото меню за избиране на компания в която работи служител
-        selectCompanyComboBox.getItems().clear();
+        //selectCompanyComboBox.getItems().clear();
 
-        selectCompanyComboBox.getItems().addAll(companyData);
+        selectCompanyComboBox.setItems(model.getCompaniesObservableList());
+
+        selectBuildingComboBox.setItems(model.getBuildingsObservableList());
+
+        // Event Listener
+
+        ObservableList<Building> buildingsForEmployeeData = model.getBuildingsForEmployeeOL();
+        buildingsForAnEmployeeListView.setItems(buildingsForEmployeeData);
+
+        employeeTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                employeeTableView.getSelectionModel();
+                List<Building> buildings = DBMethods.getBuildingsForEmployee(newSelection);
+                model.setBuildingsForEmployeeOL(buildings);
+            }
+        });
     }
 
     public void saveEmployeeData(ActionEvent actionEvent) {
@@ -73,8 +90,9 @@ public class CompaniesAndEmployeesTabController implements Initializable {
             String employeeName = employeeNameTextField.getText();
             String employeeEgn = employeeEgnTextField.getText();
             Company employeeCompany = selectCompanyComboBox.getValue();
+            Building employeeBuilding = selectBuildingComboBox.getValue();
 
-            Integer employeeId = DBMethods.addEmployee(employeeName, employeeEgn, employeeCompany);
+            Integer employeeId = DBMethods.addEmployee(employeeName, employeeEgn, employeeCompany, employeeBuilding);
             Employee employeeObject = DBMethods.getEmployee(employeeId);
 
             employeeTableView.getItems().add(employeeObject);
@@ -101,6 +119,7 @@ public class CompaniesAndEmployeesTabController implements Initializable {
             Integer companyId = DBMethods.addCompany(companyName);
             Company companyObject = DBMethods.getCompany(companyId);
 
+            model.addCompanyToArrayList(companyObject);
             companyTableView.getItems().add(companyObject);
             companyNameTextField.clear();
         } else {
@@ -113,6 +132,15 @@ public class CompaniesAndEmployeesTabController implements Initializable {
         if (selectedObject != null) {
             companyTableView.getItems().removeAll(selectedObject);
             DBMethods.deleteCompany(selectedObject.getIdCompany());
+            model.removeCompanyFromArrayList(selectedObject);
         }
+    }
+
+    public void addBuildingToAnEmployeeAction(ActionEvent actionEvent) {
+        Building selectedBuilding = selectBuildingComboBox.getValue();
+
+        Employee employee = employeeTableView.getSelectionModel().getSelectedItem();
+
+        DBMethods.addBuildingToAnEmployee(selectedBuilding, employee);
     }
 }

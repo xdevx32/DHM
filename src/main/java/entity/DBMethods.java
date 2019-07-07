@@ -10,7 +10,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import utility.AlertErrorUtility;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -192,16 +194,15 @@ public class DBMethods {
     //Status: Needs testing
     /* BUILDING */
     /* Method to GET all BUILDINGS from the database*/
-    public static ObservableList<Building> getBuildings() {
+    public static ArrayList<Building> getBuildings() {
         Session session = sessionFactory.openSession();
         Transaction tx = null;
 
         try {
             tx = session.beginTransaction();
-            List buildings = session.createQuery("FROM " + Building.class.getSimpleName()).list();
-            ObservableList<Building> buildingObservableList = FXCollections.observableArrayList(buildings);
+            List<Building> buildings = session.createQuery("FROM " + Building.class.getSimpleName()).list();
             tx.commit();
-            return buildingObservableList;
+            return new ArrayList<Building>(buildings);
         } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
@@ -314,14 +315,14 @@ public class DBMethods {
     // Status: Needs testing
     /* EMPLOYEE */
     /* Method to CREATE an EMPLOYEE in the database*/
-    public static Integer addEmployee(String name, String egn, Company company) {
+    public static Integer addEmployee(String name, String egn, Company company, Building building) {
         Session session = sessionFactory.openSession();
         Transaction tx = null;
         Integer employeeID = null;
 
         try {
             tx = session.beginTransaction();
-            Employee employee = new Employee(name, egn, company);
+            Employee employee = new Employee(name, egn, company, building);
             employeeID = (Integer) session.save(employee);
             tx.commit();
         } catch (HibernateException e) {
@@ -397,6 +398,58 @@ public class DBMethods {
             ObservableList<Employee> employeeObservableList = FXCollections.observableArrayList(employees);
             tx.commit();
             return employeeObservableList;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
+
+    // Status: Ready for one
+    /* BUILDING & EMPLOYEE */
+    /* Method to ADD a BUILDING maintained by an EMPLOYEE */
+    public static void addBuildingToAnEmployee(Building building, Employee employee) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+
+            employee.setSingleBuilding(building);
+            session.update(employee);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            AlertErrorUtility.showCustomAlert("Служителя вече обслужва сградата.");
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+    // Status: Ready
+    /* BUILDING & EMPLOYEE */
+    /* Method to RETURN all facilities FOR A SPECIFIC PARK*/
+    public static ArrayList<Building> getBuildingsForEmployee(Employee employee) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+
+            List buildings = session.createQuery("select e.buildings from Employee e where e.idEmployee=:idEmployee")
+                    .setParameter("idEmployee", employee.getIdEmployee())
+                    .list();
+
+            tx.commit();
+            return new ArrayList<Building>(buildings);
         } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();

@@ -3,6 +3,7 @@ package controller;
 import entity.ApartmentOwner;
 import entity.Building;
 import entity.DBMethods;
+import entity.Model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,6 +18,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class BuildingsTabController implements Initializable {
+
+    private Model model = Model.getInstance();
 
     public TableView<ApartmentOwner> apartmentOwnerTableView;
 
@@ -66,8 +69,7 @@ public class BuildingsTabController implements Initializable {
 
         apartmentOwnerTableView.setItems(apartmentOwnerData);
 
-
-        final ObservableList<Building> buildingData = FXCollections.observableArrayList(DBMethods.getBuildings());
+        ObservableList<Building> buildingData = model.getBuildingsObservableList();
 
         buildingIdColumn.setCellValueFactory(new PropertyValueFactory<>("idBuilding"));
         buildingNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -99,9 +101,15 @@ public class BuildingsTabController implements Initializable {
                     buildingApartments, buildingArea, buildingSharedParts);
             Building buildingObject = DBMethods.getBuilding(buildingId);
 
+            model.addBuildingToArrayList(buildingObject);
+
             buildingTableView.getItems().add(buildingObject);
             buildingNameTextField.clear();
-            buildingNameTextField.clear();
+            buildingAddressTextField.clear();
+            buildingFloorsTextField.clear();
+            buildingApartmentsTextField.clear();
+            buildingAreaTextField.clear();
+            buildingSharedPartsTextField.clear();
         } else {
             AlertErrorUtility.showCustomAlert("Неправилно въведени данни!");
         }
@@ -112,6 +120,7 @@ public class BuildingsTabController implements Initializable {
         if (selectedObject != null) {
             buildingTableView.getItems().removeAll(selectedObject);
             DBMethods.deleteBuilding(selectedObject.getIdBuilding());
+            model.removeBuildingFromArrayList(selectedObject);
         }
     }
 
