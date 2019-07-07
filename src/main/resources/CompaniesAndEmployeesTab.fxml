@@ -58,7 +58,7 @@
             </TableView>
          </children>
       </FlowPane>
-      <FlowPane layoutX="500.0" layoutY="313.0" prefHeight="68.0" prefWidth="466.0">
+      <FlowPane layoutX="500.0" layoutY="321.0" prefHeight="68.0" prefWidth="466.0">
          <children>
             <ListView fx:id="buildingsForAnEmployeeListView" prefHeight="67.0" prefWidth="466.0" />
          </children>
