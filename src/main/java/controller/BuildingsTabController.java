@@ -17,15 +17,24 @@ import utility.AlertErrorUtility;
 
 import java.io.File;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class BuildingsTabController implements Initializable {
 
     private Model model = Model.getInstance();
 
+    public ListView<LocalDate> paymentsListView;
+
+    public DatePicker paymentDate;
+
     public TextField taxTextField;
 
     public ImageView taxInfoImg;
+
+    public ImageView paymentInfoImg;
 
     public Button saveOrChangeTaxButton;
 
@@ -107,7 +116,30 @@ public class BuildingsTabController implements Initializable {
         tooltip.setWidth(6);
         tooltip.setAutoHide(false);
 
-        Tooltip.install(taxInfoImg, tooltip);
+        final Tooltip tooltip2 = new Tooltip();
+        tooltip2.setText(
+                "1. Изберете живущ от таблицата\n" +
+                        "2. Изберете дата на плащане\n" +
+                        "3. Използвайте бутона за да запазите плащането."
+        );
+        tooltip2.setFont(new Font(12));
+        tooltip2.setWidth(6);
+        tooltip2.setAutoHide(false);
+
+        Tooltip.install(paymentInfoImg, tooltip2);
+
+        // Event Listener
+
+        ObservableList<LocalDate> paymentDatesForAptartmentOwnerOL = model.getPaymentDatesForApartmentOwnerOL();
+        paymentsListView.setItems(paymentDatesForAptartmentOwnerOL);
+
+        apartmentOwnerTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                apartmentOwnerTableView.getSelectionModel();
+                List<LocalDate> dates = DBMethods.getPaymentDatesForApartmentOwner(newSelection);
+                model.setPaymentDatesForApartmentOwnerOL(dates);
+            }
+        });
     }
 
     public void saveBuildingData(ActionEvent actionEvent) {
@@ -195,5 +227,19 @@ public class BuildingsTabController implements Initializable {
             AlertErrorUtility.showCustomAlert("Неправилно въведени данни!");
         }
 
+    }
+
+    public void savePaymentAction(ActionEvent actionEvent) {
+        if ((paymentDate.getValue() != null)) {
+
+            ApartmentOwner selectedApartmentOwner = apartmentOwnerTableView.getSelectionModel().getSelectedItem();
+
+            DBMethods.addPaymentToApartmentOwner(selectedApartmentOwner, paymentDate.getValue());
+
+            model.setPaymentDatesForApartmentOwnerOL(DBMethods.getPaymentDatesForApartmentOwner(selectedApartmentOwner));
+
+        } else {
+            AlertErrorUtility.showCustomAlert("Моля, изберете дата на плащане.");
+        }
     }
 }

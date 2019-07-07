@@ -3,7 +3,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -76,11 +78,6 @@
                 </GridPane>
             </children>
         </FlowPane>
-        <Label layoutX="25.0" layoutY="2.0" prefHeight="17.0" prefWidth="208.0" text="Управление на сгради">
-            <font>
-                <Font size="18.0" />
-            </font>
-        </Label>
         <FlowPane layoutX="751.0" layoutY="30.0" prefHeight="345.0" prefWidth="104.0">
             <children>
                 <TableView fx:id="apartmentOwnerTableView" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="243.0">
@@ -91,14 +88,9 @@
                 </TableView>
             </children>
         </FlowPane>
-        <Label layoutX="751.0" layoutY="1.0" prefHeight="23.0" prefWidth="142.0" text="Живущи">
-            <font>
-                <Font size="19.0" />
-            </font>
-        </Label>
-        <FlowPane alignment="TOP_CENTER" layoutX="760.0" layoutY="401.0" prefHeight="129.0" prefWidth="226.0">
+        <FlowPane alignment="TOP_CENTER" layoutX="760.0" layoutY="544.0" prefHeight="104.0" prefWidth="226.0">
             <children>
-                <GridPane hgap="10.0" prefHeight="122.0" prefWidth="202.0" vgap="10.0">
+                <GridPane hgap="10.0" prefHeight="117.0" prefWidth="202.0" vgap="10.0">
                     <children>
                         <TextField fx:id="apartmentOwnerNameTextField" prefHeight="26.0" prefWidth="172.0" GridPane.columnIndex="1">
                             <GridPane.margin>
@@ -150,7 +142,35 @@
             </GridPane>
          </children>
       </FlowPane>
-      <Label layoutX="466.0" layoutY="388.0" text="Въвеждане на такса:">
+      <FlowPane layoutX="468.0" layoutY="548.0" prefHeight="104.0" prefWidth="271.0">
+         <children>
+            <GridPane prefHeight="126.0" prefWidth="269.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="73.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label prefHeight="17.0" prefWidth="58.0" text="Дата:">
+                     <padding>
+                        <Insets left="13.0" />
+                     </padding>
+                  </Label>
+                  <DatePicker fx:id="paymentDate" prefHeight="39.0" prefWidth="138.0" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#savePaymentAction" prefHeight="29.0" prefWidth="134.0" text="Запази" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+         </children>
+      </FlowPane>
+      <FlowPane layoutX="753.0" layoutY="418.0" prefHeight="87.0" prefWidth="243.0">
+         <children>
+            <ListView fx:id="paymentsListView" prefHeight="87.0" prefWidth="243.0" />
+         </children>
+      </FlowPane>
+      <Label layoutX="466.0" layoutY="388.0" text="Въвеждане на такса">
          <font>
             <Font size="18.0" />
          </font>
@@ -164,7 +184,32 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="751.0" layoutY="388.0" text="Добавяне на живущ">
+      <Label layoutX="760.0" layoutY="507.0" text="Добавяне на живущ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="466.0" layoutY="507.0" text="Извършване на плащане">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="paymentInfoImg" fitHeight="17.0" fitWidth="18.0" layoutX="698.0" layoutY="510.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@info-black.png" />
+         </image>
+      </ImageView>
+        <Label layoutX="751.0" layoutY="1.0" prefHeight="23.0" prefWidth="142.0" text="Живущи">
+            <font>
+                <Font size="19.0" />
+            </font>
+        </Label>
+        <Label layoutX="25.0" layoutY="2.0" prefHeight="17.0" prefWidth="208.0" text="Управление на сгради">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+      <Label layoutX="760.0" layoutY="389.0" text="Плащания по дата">
          <font>
             <Font size="18.0" />
          </font>

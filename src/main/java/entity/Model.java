@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,16 @@ public class Model {
     ObservableList<Company> companiesObservableList = FXCollections.observableArrayList();
 
     List<Company> companiesList = DBMethods.getCompanies();
+
+    /*
+    *
+    *  Payment dates for selected apartment owner
+    *
+     */
+
+    ObservableList<LocalDate> paymentDatesForApartmentOwnerOL = FXCollections.observableArrayList();
+
+    List<LocalDate> paymentDatesForApartmentOwnerList = new ArrayList<LocalDate>(0);
 
 
     // static variable single_instance of type Model
@@ -78,6 +89,10 @@ public class Model {
         return buildingsForEmployeeOL;
     }
 
+    public ObservableList<LocalDate> getPaymentDatesForApartmentOwnerOL() {
+        return paymentDatesForApartmentOwnerOL;
+    }
+
     public List<Building> getBuildingsList() {
         return buildingsList;
     }
@@ -88,6 +103,10 @@ public class Model {
 
     public void setBuildingsForEmployeeOL(List<Building> buildingsArrayList) {
         buildingsForEmployeeOL.setAll(buildingsArrayList);
+    }
+
+    public void setPaymentDatesForApartmentOwnerOL(List<LocalDate> paymentDatesForApartmentOwnerList) {
+        this.paymentDatesForApartmentOwnerOL.setAll(paymentDatesForApartmentOwnerList);
     }
 
     public void setBuildingsList(List<Building> buildingsList) {
