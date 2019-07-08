@@ -126,6 +126,7 @@ public class BuildingsTabController implements Initializable {
         tooltip2.setWidth(6);
         tooltip2.setAutoHide(false);
 
+        Tooltip.install(taxInfoImg, tooltip);
         Tooltip.install(paymentInfoImg, tooltip2);
 
         // Event Listener
