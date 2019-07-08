@@ -16,7 +16,7 @@ public class Model {
     *
     * Buildings
     *
-     */
+    */
     ObservableList<Building> buildingsObservableList = FXCollections.observableArrayList();
 
     List<Building> buildingsList = DBMethods.getBuildings();
@@ -26,7 +26,7 @@ public class Model {
     *
     * Buildings for an employee
     *
-     */
+    */
     ObservableList<Building> buildingsForEmployeeOL = FXCollections.observableArrayList();
 
     List<Building> buildingsForEmployeeList = new ArrayList<Building>(0);
@@ -45,7 +45,7 @@ public class Model {
     *
     *  Payment dates for selected apartment owner
     *
-     */
+    */
 
     ObservableList<LocalDate> paymentDatesForApartmentOwnerOL = FXCollections.observableArrayList();
 
