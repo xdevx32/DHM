@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -18,27 +19,27 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BuildingsTabController">
+<AnchorPane prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BuildingsTabController">
     <children>
-        <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" layoutX="25.0" layoutY="30.0" prefHeight="345.0" prefWidth="711.0">
+        <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" layoutX="14.0" layoutY="30.0" prefHeight="345.0" prefWidth="678.0">
             <children>
-                <TableView fx:id="buildingTableView" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="717.0">
+                <TableView fx:id="buildingTableView" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="676.0">
                     <columns>
                         <TableColumn fx:id="buildingIdColumn" prefWidth="35.0" text="№" />
                         <TableColumn fx:id="buildingNameColumn" prefWidth="108.0" text="Име" />
                         <TableColumn fx:id="buildingAddressColumn" prefWidth="161.0" text="Адрес" />
                         <TableColumn fx:id="buildingFloorsColumn" prefWidth="73.0" text="Етажи" />
-                        <TableColumn fx:id="buildingApartmentsCountColumn" prefWidth="106.0" text="Апартаменти" />
-                        <TableColumn fx:id="buildingAreaColumn" prefWidth="74.0" text="Площ" />
-                        <TableColumn fx:id="buildingSharedPartsColumn" prefWidth="98.0" text="Общи части" />
-                        <TableColumn fx:id="buildingTaxColumn" prefWidth="61.0" text="Такса" />
+                        <TableColumn fx:id="buildingApartmentsCountColumn" prefWidth="96.0" text="Апартаменти" />
+                        <TableColumn fx:id="buildingAreaColumn" prefWidth="70.0" text="Площ" />
+                        <TableColumn fx:id="buildingSharedPartsColumn" prefWidth="86.0" text="Общи части" />
+                        <TableColumn fx:id="buildingTaxColumn" prefWidth="45.0" text="Такса" />
                     </columns>
                 </TableView>
             </children>
         </FlowPane>
-        <FlowPane alignment="TOP_CENTER" layoutX="25.0" layoutY="409.0" prefHeight="242.0" prefWidth="400.0">
+        <FlowPane alignment="TOP_CENTER" layoutX="25.0" layoutY="409.0" prefHeight="234.0" prefWidth="400.0">
             <children>
-                <GridPane hgap="10.0" prefHeight="241.0" prefWidth="398.0" vgap="10.0">
+                <GridPane hgap="10.0" prefHeight="292.0" prefWidth="398.0" vgap="10.0">
                     <children>
                   <TextField fx:id="buildingNameTextField" prefHeight="27.0" prefWidth="149.0" GridPane.columnIndex="1" />
                         <TextField fx:id="buildingAddressTextField" prefHeight="27.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -78,30 +79,33 @@
                 </GridPane>
             </children>
         </FlowPane>
-        <FlowPane layoutX="751.0" layoutY="30.0" prefHeight="345.0" prefWidth="104.0">
+        <FlowPane layoutX="913.0" layoutY="30.0" prefHeight="345.0" prefWidth="104.0">
             <children>
-                <TableView fx:id="apartmentOwnerTableView" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="243.0">
+                <TableView fx:id="apartmentOwnerTableView" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="273.0">
                     <columns>
-                        <TableColumn fx:id="apartmentOwnerNameColumn" prefWidth="118.0" text="Име" />
-                        <TableColumn fx:id="apartmentOwnerEgnColumn" prefWidth="123.0" text="ЕГН" />
+                        <TableColumn fx:id="apartmentOwnerNameColumn" prefWidth="156.0" text="Име" />
+                        <TableColumn fx:id="apartmentOwnerEgnColumn" prefWidth="121.0" text="ЕГН" />
                     </columns>
                 </TableView>
             </children>
         </FlowPane>
-        <FlowPane alignment="TOP_CENTER" layoutX="760.0" layoutY="544.0" prefHeight="104.0" prefWidth="226.0">
+        <FlowPane alignment="TOP_CENTER" layoutX="760.0" layoutY="544.0" prefHeight="169.0" prefWidth="404.0">
             <children>
-                <GridPane hgap="10.0" prefHeight="117.0" prefWidth="202.0" vgap="10.0">
+                <GridPane hgap="10.0" prefHeight="161.0" prefWidth="404.0" vgap="10.0">
                     <children>
                         <TextField fx:id="apartmentOwnerNameTextField" prefHeight="26.0" prefWidth="172.0" GridPane.columnIndex="1">
                             <GridPane.margin>
                                 <Insets />
                             </GridPane.margin>
                         </TextField>
-                        <TextField fx:id="apartmentOwnerEgnTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Button mnemonicParsing="false" onAction="#saveApartmentOwnerData" prefHeight="27.0" prefWidth="162.0" text="Запази" GridPane.rowIndex="2" />
-                        <Button mnemonicParsing="false" onAction="#deleteApartmentOwnerData" prefHeight="27.0" prefWidth="228.0" text="Изтрий" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="apartmentOwnerEgnTextField" prefHeight="52.0" prefWidth="230.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#saveApartmentOwnerData" prefHeight="27.0" prefWidth="192.0" text="Запази" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#deleteApartmentOwnerData" prefHeight="27.0" prefWidth="254.0" text="Изтрий" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label prefHeight="17.0" prefWidth="158.0" text="Име" />
                         <Label prefHeight="17.0" prefWidth="157.0" text="ЕГН" GridPane.rowIndex="1" />
+                  <Label prefHeight="17.0" prefWidth="157.0" text="Сграда" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="apartmentOwnerBuildingComboBox" prefHeight="69.0" prefWidth="230.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Button mnemonicParsing="false" onAction="#addApartmentOwnerToBuilding" prefHeight="27.0" prefWidth="232.0" text="Добави живущ в сграда" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                     </children>
                     <columnConstraints>
                         <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="164.0" minWidth="10.0" prefWidth="68.0" />
@@ -114,20 +118,22 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                 </GridPane>
             </children>
         </FlowPane>
-      <FlowPane layoutX="459.0" layoutY="419.0" prefHeight="74.0" prefWidth="283.0">
+      <FlowPane layoutX="462.0" layoutY="418.0" prefHeight="87.0" prefWidth="208.0">
          <children>
-            <GridPane prefHeight="75.0" prefWidth="283.0">
+            <GridPane prefHeight="87.0" prefWidth="209.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.0" minWidth="10.0" prefWidth="141.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="162.0" minWidth="10.0" prefWidth="142.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.0" minWidth="10.0" prefWidth="58.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="10.0" prefWidth="151.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="43.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label prefHeight="17.0" prefWidth="58.0" text="Сума:">
@@ -135,23 +141,23 @@
                         <Insets left="13.0" />
                      </padding>
                   </Label>
-                  <TextField fx:id="taxTextField" prefHeight="29.0" prefWidth="142.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="taxTextField" prefHeight="29.0" prefWidth="123.0" GridPane.columnIndex="1" />
                   <ButtonBar prefHeight="40.0" prefWidth="200.0" GridPane.rowIndex="1" />
-                <Button fx:id="saveOrChangeTaxButton" mnemonicParsing="false" onAction="#saveOrChangeTaxButton" prefHeight="27.0" prefWidth="158.0" text="Запази/Промени" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Button fx:id="saveOrChangeTaxButton" mnemonicParsing="false" onAction="#saveOrChangeTaxButton" prefHeight="27.0" prefWidth="152.0" text="Запази/Промени" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
       </FlowPane>
-      <FlowPane layoutX="468.0" layoutY="548.0" prefHeight="104.0" prefWidth="271.0">
+      <FlowPane layoutX="465.0" layoutY="552.0" prefHeight="105.0" prefWidth="209.0">
          <children>
-            <GridPane prefHeight="126.0" prefWidth="269.0">
+            <GridPane prefHeight="105.0" prefWidth="207.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.0" minWidth="10.0" prefWidth="57.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="213.0" minWidth="10.0" prefWidth="150.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="73.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="142.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="103.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label prefHeight="17.0" prefWidth="58.0" text="Дата:">
@@ -159,15 +165,15 @@
                         <Insets left="13.0" />
                      </padding>
                   </Label>
-                  <DatePicker fx:id="paymentDate" prefHeight="39.0" prefWidth="138.0" GridPane.columnIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#savePaymentAction" prefHeight="29.0" prefWidth="134.0" text="Запази" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <DatePicker fx:id="paymentDate" prefHeight="30.0" prefWidth="149.0" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#savePaymentAction" prefHeight="29.0" prefWidth="148.0" text="Запази" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
       </FlowPane>
       <FlowPane layoutX="753.0" layoutY="418.0" prefHeight="87.0" prefWidth="243.0">
          <children>
-            <ListView fx:id="paymentsListView" prefHeight="87.0" prefWidth="243.0" />
+            <ListView fx:id="paymentsListView" prefHeight="87.0" prefWidth="418.0" />
          </children>
       </FlowPane>
       <Label layoutX="466.0" layoutY="388.0" text="Въвеждане на такса">
@@ -184,22 +190,22 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="760.0" layoutY="507.0" text="Добавяне на живущ">
+      <Label layoutX="760.0" layoutY="519.0" text="Добавяне на живущ">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="466.0" layoutY="507.0" text="Извършване на плащане">
+      <Label layoutX="466.0" layoutY="519.0" text="Извършване на плащане">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <ImageView fx:id="paymentInfoImg" fitHeight="17.0" fitWidth="18.0" layoutX="698.0" layoutY="510.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="paymentInfoImg" fitHeight="17.0" fitWidth="18.0" layoutX="698.0" layoutY="522.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@info-black.png" />
          </image>
       </ImageView>
-        <Label layoutX="751.0" layoutY="1.0" prefHeight="23.0" prefWidth="142.0" text="Живущи">
+        <Label layoutX="913.0" layoutY="6.0" prefHeight="23.0" prefWidth="142.0" text="Живущи">
             <font>
                 <Font size="19.0" />
             </font>
@@ -214,5 +220,11 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <Label layoutX="715.0" layoutY="6.0" text="Живущи в сграда">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ListView fx:id="apartmentOwnersForSelectedBuildingListView" layoutX="707.0" layoutY="30.0" prefHeight="345.0" prefWidth="200.0" />
     </children>
 </AnchorPane>

@@ -51,7 +51,21 @@ public class Model {
 
     List<LocalDate> paymentDatesForApartmentOwnerList = new ArrayList<LocalDate>(0);
 
+    /*
+    *
+    *  Apartment owners for selected building
+    *
+    */
 
+    ObservableList<ApartmentOwner> apartmentOwnersForBuildingOL = FXCollections.observableArrayList();
+
+    List<ApartmentOwner> apartmentOwnersForBuildingList = new ArrayList<ApartmentOwner>(0);
+
+    /*
+    *
+    *  End
+    *
+    */
     // static variable single_instance of type Model
     private static Model single_instance = null;
 
@@ -93,6 +107,10 @@ public class Model {
         return paymentDatesForApartmentOwnerOL;
     }
 
+    public ObservableList<ApartmentOwner> getApartmentOwnersForBuildingOL() {
+        return apartmentOwnersForBuildingOL;
+    }
+
     public List<Building> getBuildingsList() {
         return buildingsList;
     }
@@ -107,6 +125,10 @@ public class Model {
 
     public void setPaymentDatesForApartmentOwnerOL(List<LocalDate> paymentDatesForApartmentOwnerList) {
         this.paymentDatesForApartmentOwnerOL.setAll(paymentDatesForApartmentOwnerList);
+    }
+
+    public void setApartmentOwnersForBuildingOL(List<ApartmentOwner> apartmentOwnersForBuilding) {
+        this.apartmentOwnersForBuildingOL.setAll(apartmentOwnersForBuilding);
     }
 
     public void setBuildingsList(List<Building> buildingsList) {

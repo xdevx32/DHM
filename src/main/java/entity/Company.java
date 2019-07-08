@@ -47,9 +47,6 @@ public class Company implements java.io.Serializable {
         return employees;
     }
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "idCompany", nullable = true)
-
     @OneToMany(mappedBy = "company")
     public Set<Building> getBuildings() {
         return buildings;

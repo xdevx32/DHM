@@ -15,11 +15,11 @@ import java.util.*;
 
 public class CompaniesAndEmployeesTabController implements Initializable {
 
-    public ListView<Building> buildingsForAnEmployeeListView;
-
     private Model model = Model.getInstance();
 
     public TextField employeeNameTextField;
+
+    public ListView<Building> buildingsForAnEmployeeListView;
 
     public TextField employeeEgnTextField;
 

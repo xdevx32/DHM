@@ -82,7 +82,7 @@ public class Building implements java.io.Serializable{
         return sharedParts;
     }
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "idBuilding", nullable = true)
     public Set<ApartmentOwner> getApartmentOwners() {
         return apartmentOwners;
@@ -181,6 +181,10 @@ public class Building implements java.io.Serializable{
 
     public void setSingleEmployee(Employee employee) {
         employees.add(employee);
+    }
+
+    public void setSingleApartmentOwner(ApartmentOwner apartmentOwner) {
+        apartmentOwners.add(apartmentOwner);
     }
 
     @Override

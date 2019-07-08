@@ -10,15 +10,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 import utility.AlertErrorUtility;
 
-import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -38,7 +35,11 @@ public class BuildingsTabController implements Initializable {
 
     public Button saveOrChangeTaxButton;
 
-    public TableColumn buildingTaxColumn;
+    public ComboBox<Building> apartmentOwnerBuildingComboBox;
+
+    public TableColumn<Object, Object> apartmentOwnerBuildingColumn;
+
+    public TableColumn<Object, Object> buildingTaxColumn;
 
     public TableView<ApartmentOwner> apartmentOwnerTableView;
 
@@ -64,6 +65,8 @@ public class BuildingsTabController implements Initializable {
 
     public TableColumn<Object, Object> buildingSharedPartsColumn;
 
+    public ListView<ApartmentOwner> apartmentOwnersForSelectedBuildingListView;
+
     public TextField buildingAddressTextField;
 
     public TextField buildingFloorsTextField;
@@ -85,7 +88,6 @@ public class BuildingsTabController implements Initializable {
 
         apartmentOwnerNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         apartmentOwnerEgnColumn.setCellValueFactory(new PropertyValueFactory<>("egn"));
-
         apartmentOwnerTableView.setItems(apartmentOwnerData);
 
         ObservableList<Building> buildingData = model.getBuildingsObservableList();
@@ -101,17 +103,13 @@ public class BuildingsTabController implements Initializable {
 
         buildingTableView.setItems(buildingData);
 
-
-        File file = new File("src/main/resources/info-black.png");
-        Image image = new Image(file.toURI().toString());
-        taxInfoImg.setImage(image);
-
         final Tooltip tooltip = new Tooltip();
         tooltip.setText(
                 "1. Изберете сграда от таблицата\n" +
                 "2. Въведете сумата на такса\n" +
                 "3. Използвайте бутона за да запазите или обновите данните."
         );
+
         tooltip.setFont(new Font(12));
         tooltip.setWidth(6);
         tooltip.setAutoHide(false);
@@ -122,6 +120,7 @@ public class BuildingsTabController implements Initializable {
                         "2. Изберете дата на плащане\n" +
                         "3. Използвайте бутона за да запазите плащането."
         );
+
         tooltip2.setFont(new Font(12));
         tooltip2.setWidth(6);
         tooltip2.setAutoHide(false);
@@ -129,16 +128,31 @@ public class BuildingsTabController implements Initializable {
         Tooltip.install(taxInfoImg, tooltip);
         Tooltip.install(paymentInfoImg, tooltip2);
 
-        // Event Listener
+        apartmentOwnerBuildingComboBox.setItems(model.getBuildingsObservableList());
 
-        ObservableList<LocalDate> paymentDatesForAptartmentOwnerOL = model.getPaymentDatesForApartmentOwnerOL();
-        paymentsListView.setItems(paymentDatesForAptartmentOwnerOL);
+        // Event Listener for payments
+
+        ObservableList<LocalDate> paymentDatesForApartmentOwnerOL = model.getPaymentDatesForApartmentOwnerOL();
+        paymentsListView.setItems(paymentDatesForApartmentOwnerOL);
 
         apartmentOwnerTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 apartmentOwnerTableView.getSelectionModel();
                 List<LocalDate> dates = DBMethods.getPaymentDatesForApartmentOwner(newSelection);
                 model.setPaymentDatesForApartmentOwnerOL(dates);
+            }
+        });
+
+        // Event listener for buildings and apartment owners
+
+        ObservableList<ApartmentOwner> apartmentOwnersForBuildingOL = model.getApartmentOwnersForBuildingOL();
+        apartmentOwnersForSelectedBuildingListView.setItems(apartmentOwnersForBuildingOL);
+
+        buildingTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                buildingTableView.getSelectionModel();
+                List<ApartmentOwner> apartmentOwners = DBMethods.getApartmentOwnersForBuilding(newSelection);
+                model.setApartmentOwnersForBuildingOL(apartmentOwners);
             }
         });
     }
@@ -241,6 +255,20 @@ public class BuildingsTabController implements Initializable {
 
         } else {
             AlertErrorUtility.showCustomAlert("Моля, изберете дата на плащане.");
+        }
+    }
+
+    public void addApartmentOwnerToBuilding(ActionEvent actionEvent) {
+        if (apartmentOwnerBuildingComboBox.getValue() != null) {
+
+            Building building = apartmentOwnerBuildingComboBox.getValue();
+            ApartmentOwner apartmentOwner = apartmentOwnerTableView.getSelectionModel().getSelectedItem();
+
+            DBMethods.addApartmentOwnerToBuilding(building, apartmentOwner);
+
+            apartmentOwnerBuildingComboBox.getSelectionModel().clearSelection();
+        } else {
+            AlertErrorUtility.showCustomAlert("Моля, изберете сграда от падащото меню.");
         }
     }
 }

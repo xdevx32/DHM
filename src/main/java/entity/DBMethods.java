@@ -168,6 +168,28 @@ public class DBMethods {
         return null;
     }
 
+    /* APARTMENT OWNER */
+    /* Method to add APARTMENT OWNER for a BUILDING*/
+    public static void addApartmentOwnerToBuilding(Building building, ApartmentOwner apartmentOwner) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+
+            building.setSingleApartmentOwner(apartmentOwner);
+            session.update(building);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
     // Status: Done
     /* BUILDING */
     /* Method to CREATE a BUILDING in the database */
@@ -222,7 +244,7 @@ public class DBMethods {
 
     //Status: Done
     /* BUILDING */
-    /* Method to DELETE a BUILDING from the database*/
+    /* Method to DELETE a BUILDING from the database */
     public static void deleteBuilding(Integer idBuilding) {
         Session session = sessionFactory.openSession();
         Transaction tx = null;
@@ -242,6 +264,8 @@ public class DBMethods {
         }
     }
 
+    /* BUILDING */
+    /* Method to ADD tax to a BUILDING to the database */
     public static void addTaxToBuilding(Building building, Double tax){
         Session session = sessionFactory.openSession();
         Transaction tx = null;
@@ -507,7 +531,7 @@ public class DBMethods {
 
     // Status: Ready
     /* BUILDING & EMPLOYEE */
-    /* Method to RETURN all facilities FOR A SPECIFIC PARK*/
+    /* Method to RETURN all BUILDINGS for a specific EMPLOYEE*/
     public static ArrayList<Building> getBuildingsForEmployee(Employee employee) {
         Session session = sessionFactory.openSession();
         Transaction tx = null;
@@ -521,6 +545,32 @@ public class DBMethods {
 
             tx.commit();
             return new ArrayList<Building>(buildings);
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
+    /* BUILDING & APARTMENT OWNER */
+    /* */
+    public static ArrayList<ApartmentOwner> getApartmentOwnersForBuilding(Building building) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+
+            List apartmentOwners = session.createQuery("select b.apartmentOwners from Building b where b.idBuilding=:idBuilding")
+                    .setParameter("idBuilding", building.getIdBuilding())
+                    .list();
+
+            tx.commit();
+            return new ArrayList<ApartmentOwner>(apartmentOwners);
         } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
