@@ -24,6 +24,7 @@
                     <rowConstraints>
                   <RowConstraints maxHeight="92.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="92.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="92.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="125.0" minHeight="10.0" prefHeight="104.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="147.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="147.0" vgrow="SOMETIMES" />
@@ -32,7 +33,7 @@
                     <children>
                         <Pane prefHeight="36.0" prefWidth="500.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="1">
                             <children>
-                                <Label alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="591.0" text="Брой  сгради">
+                                <Label alignment="CENTER_RIGHT" layoutX="5.0" layoutY="25.0" prefHeight="32.0" prefWidth="591.0" text="Брой  сгради">
                                     <padding>
                                         <Insets left="1.0" right="7.0" />
                                     </padding>
@@ -40,17 +41,9 @@
                               <Font size="17.0" />
                            </font>
                                 </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="105.0" layoutY="27.0" prefHeight="39.0" prefWidth="485.0" text="Брой обслужвани сгради">
-                           <padding>
-                              <Insets left="1.0" right="7.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </Label>
                             </children>
                         </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="2">
+                        <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="3">
                             <children>
                                 <Label alignment="CENTER_RIGHT" prefHeight="78.0" prefWidth="591.0" text="Брой апартаменти">
                                     <padding>
@@ -64,19 +57,14 @@
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <children>
-                                <Label fx:id="buildingCountLabel" layoutX="9.0" layoutY="5.0" prefHeight="23.0" prefWidth="115.0" text="0" textAlignment="CENTER">
+                                <Label fx:id="buildingCountLabel" layoutX="14.0" layoutY="27.0" prefHeight="23.0" prefWidth="115.0" text="0" textAlignment="CENTER">
                                     <font>
                                         <Font size="22.0" />
                                     </font>
                                 </Label>
-                        <Label fx:id="servicedBuildingCountLabel" layoutX="9.0" layoutY="34.0" prefHeight="28.0" prefWidth="87.0" text="0" textAlignment="CENTER">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Label>
                             </children>
                         </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                             <children>
                                 <Label fx:id="apartmentCountLabel" layoutX="9.0" layoutY="4.0" prefHeight="72.0" prefWidth="100.0" text="0">
                                     <font>
@@ -85,7 +73,7 @@
                                 </Label>
                             </children>
                         </Pane>
-                  <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="4">
+                  <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="5">
                      <children>
                         <Label alignment="CENTER_RIGHT" prefHeight="121.0" prefWidth="591.0" text="Суми за плащане">
                            <padding>
@@ -97,7 +85,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="5">
+                  <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="6">
                      <children>
                         <Label alignment="CENTER_RIGHT" prefHeight="121.0" prefWidth="591.0" text="Платени суми" textAlignment="RIGHT">
                            <padding>
@@ -109,7 +97,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane prefHeight="109.0" prefWidth="557.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <Pane prefHeight="109.0" prefWidth="557.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <children>
                         <Label fx:id="taxesToPayLabel" layoutX="9.0" prefHeight="120.0" prefWidth="126.0" text="0.0" textAlignment="CENTER">
                            <font>
@@ -118,7 +106,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane prefHeight="112.0" prefWidth="556.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <Pane prefHeight="112.0" prefWidth="556.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <children>
                         <Label fx:id="paidTaxesLabel" layoutX="9.0" prefHeight="120.0" prefWidth="169.0" text="0.0" textAlignment="CENTER">
                            <font>
@@ -127,7 +115,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="3">
+                  <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="4">
                      <children>
                         <Label alignment="CENTER_RIGHT" prefHeight="120.0" prefWidth="591.0" text="Брой живущи">
                            <padding>
@@ -139,7 +127,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane prefHeight="30.0" prefWidth="499.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Pane prefHeight="30.0" prefWidth="499.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <children>
                         <Label fx:id="apartmentOwnerCountLabel" layoutX="9.0" prefHeight="120.0" prefWidth="100.0" text="0">
                            <font>
@@ -155,22 +143,42 @@
                   </Label>
                   <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <DatePicker fx:id="reportDatePicker" layoutX="292.0" layoutY="15.0" onAction="#changeReportDatePicker">
+                        <DatePicker fx:id="reportDatePicker" layoutX="292.0" layoutY="27.0" onAction="#changeReportDatePicker">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
                         </DatePicker>
-                        <Label layoutX="14.0" layoutY="18.0" prefHeight="57.0" prefWidth="169.0" text="Стойност">
+                        <Label layoutX="14.0" layoutY="12.0" prefHeight="57.0" prefWidth="169.0" text="Стойност">
                            <font>
                               <Font size="29.0" />
                            </font>
                         </Label>
-                        <Label layoutX="226.0" layoutY="16.0" text="Дата:">
+                        <Label layoutX="229.0" layoutY="28.0" text="Дата:">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                                <Button layoutX="494.0" layoutY="14.0" mnemonicParsing="false" onAction="#refreshData" prefHeight="28.0" prefWidth="100.0" text="Обнови" />
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="2">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" layoutX="101.0" layoutY="22.0" prefHeight="39.0" prefWidth="485.0" text="Брой обслужвани сгради">
+                           <padding>
+                              <Insets left="1.0" right="7.0" />
+                           </padding>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <Label fx:id="servicedBuildingCountLabel" layoutX="8.0" layoutY="27.0" prefHeight="28.0" prefWidth="85.0" text="0" textAlignment="CENTER">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                     </children>

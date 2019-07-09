@@ -89,9 +89,9 @@
                 </TableView>
             </children>
         </FlowPane>
-        <FlowPane alignment="TOP_CENTER" layoutX="760.0" layoutY="564.0" prefHeight="153.0" prefWidth="404.0">
+        <FlowPane alignment="TOP_CENTER" layoutX="760.0" layoutY="564.0" prefHeight="144.0" prefWidth="404.0">
             <children>
-                <GridPane hgap="10.0" prefHeight="147.0" prefWidth="404.0" vgap="10.0">
+                <GridPane hgap="10.0" prefHeight="134.0" prefWidth="404.0" vgap="10.0">
                     <children>
                         <TextField fx:id="apartmentOwnerNameTextField" prefHeight="26.0" prefWidth="172.0" GridPane.columnIndex="1">
                             <GridPane.margin>

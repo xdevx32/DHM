@@ -38,18 +38,16 @@ public class ReportsTabController implements Initializable {
         servicedBuildingCountLabel.setText(BuildingsCountCalculator.calculateServicedBuildingsCount().toString());
         apartmentOwnerCountLabel.setText(ApartmentOwnerCountCalculator.calculateApartmentOwnerCount().toString());
         paidTaxesLabel.setText(TaxesCalculator.calculatePaidTaxes(LocalDate.now()).toString());
+        taxesToPayLabel.setText(TaxesCalculator.calculateUnpaidTaxes(LocalDate.now()).toString());
     }
 
     @FXML
-    void refreshData(ActionEvent event) {
+    public void changeReportDatePicker(ActionEvent actionEvent) {
         apartmentCountLabel.setText(ApartmentsCountCalculator.calculateApartmentsCount().toString());
         buildingCountLabel.setText(BuildingsCountCalculator.calculateBuildingsCount().toString());
         servicedBuildingCountLabel.setText(BuildingsCountCalculator.calculateServicedBuildingsCount().toString());
         apartmentOwnerCountLabel.setText(ApartmentOwnerCountCalculator.calculateApartmentOwnerCount().toString());
         paidTaxesLabel.setText(TaxesCalculator.calculatePaidTaxes(reportDatePicker.getValue()).toString());
-    }
-
-    public void changeReportDatePicker(ActionEvent actionEvent) {
-
+        taxesToPayLabel.setText(TaxesCalculator.calculateUnpaidTaxes(reportDatePicker.getValue()).toString());
     }
 }
