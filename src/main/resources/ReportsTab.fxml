@@ -32,7 +32,7 @@
                     <children>
                         <Pane prefHeight="74.0" prefWidth="499.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;">
                             <children>
-                                <Label alignment="CENTER_RIGHT" prefHeight="64.0" prefWidth="499.0" text="Брой обслужвани сгради">
+                                <Label alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="499.0" text="Брой  сгради">
                                     <padding>
                                         <Insets left="1.0" right="7.0" />
                                     </padding>
@@ -40,6 +40,14 @@
                               <Font size="17.0" />
                            </font>
                                 </Label>
+                        <Label alignment="CENTER_RIGHT" layoutX="105.0" layoutY="27.0" prefHeight="39.0" prefWidth="392.0" text="Брой обслужвани сгради">
+                           <padding>
+                              <Insets left="1.0" right="7.0" />
+                           </padding>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
                             </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="1">
@@ -68,16 +76,21 @@
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1">
                             <children>
-                                <Label fx:id="totalIncomeForParks" layoutX="9.0" prefHeight="64.0" prefWidth="115.0" text="0.0" textAlignment="CENTER">
+                                <Label fx:id="buildingCountLabel" layoutX="9.0" layoutY="5.0" prefHeight="23.0" prefWidth="115.0" text="0" textAlignment="CENTER">
                                     <font>
-                                        <Font size="24.0" />
+                                        <Font size="22.0" />
                                     </font>
                                 </Label>
+                        <Label fx:id="servicedBuildingCountLabel" layoutX="9.0" layoutY="34.0" prefHeight="28.0" prefWidth="87.0" text="0" textAlignment="CENTER">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
                             </children>
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <children>
-                                <Label fx:id="avgAgeLabel" layoutX="9.0" layoutY="4.0" prefHeight="72.0" prefWidth="100.0" text="0">
+                                <Label fx:id="apartmentCountLabel" layoutX="9.0" layoutY="4.0" prefHeight="72.0" prefWidth="100.0" text="0">
                                     <font>
                                         <Font size="24.0" />
                                     </font>
@@ -115,7 +128,7 @@
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <children>
-                        <Label fx:id="totalIncomeForParks1" layoutX="9.0" prefHeight="120.0" prefWidth="126.0" text="0.0" textAlignment="CENTER">
+                        <Label fx:id="taxesToPayLabel" layoutX="9.0" prefHeight="120.0" prefWidth="126.0" text="0.0" textAlignment="CENTER">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -124,7 +137,7 @@
                   </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <children>
-                        <Label fx:id="totalIncomeForParks2" layoutX="9.0" prefHeight="120.0" prefWidth="169.0" text="0.0" textAlignment="CENTER">
+                        <Label fx:id="paidTaxesLabel" layoutX="9.0" prefHeight="120.0" prefWidth="169.0" text="0.0" textAlignment="CENTER">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -145,7 +158,7 @@
                   </Pane>
                   <Pane prefHeight="30.0" prefWidth="499.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <Label fx:id="avgAgeLabel1" layoutX="9.0" prefHeight="140.0" prefWidth="100.0" text="0">
+                        <Label fx:id="apartmentOwnerCountLabel" layoutX="9.0" prefHeight="120.0" prefWidth="100.0" text="0">
                            <font>
                               <Font size="24.0" />
                            </font>

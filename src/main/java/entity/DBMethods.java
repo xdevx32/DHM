@@ -418,6 +418,8 @@ public class DBMethods {
         try {
             tx = session.beginTransaction();
             Employee employee = new Employee(name, egn, company, building);
+            building.setHasService(true);
+            session.update(building);
             employeeID = (Integer) session.save(employee);
             tx.commit();
         } catch (HibernateException e) {
@@ -515,8 +517,10 @@ public class DBMethods {
         try {
             tx = session.beginTransaction();
 
+            building.setHasService(true);
             employee.setSingleBuilding(building);
             session.update(employee);
+            session.update(building);
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) {

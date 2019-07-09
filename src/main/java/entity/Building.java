@@ -39,6 +39,8 @@ public class Building implements java.io.Serializable{
 
     private Double tax;
 
+    private Boolean hasService;
+
     /*
      *
      *  Getters with annotations
@@ -103,6 +105,11 @@ public class Building implements java.io.Serializable{
         return tax;
     }
 
+    @Column(name = "has_service")
+    public Boolean getHasService() {
+        return hasService;
+    }
+
     /*
      *
      * Setters
@@ -153,6 +160,10 @@ public class Building implements java.io.Serializable{
         this.tax = tax;
     }
 
+    public void setHasService(Boolean hasService) {
+        this.hasService = hasService;
+    }
+
     /*
      *
      *  Constructors
@@ -171,6 +182,7 @@ public class Building implements java.io.Serializable{
         this.apartmentsCount = apartmentsCount;
         this.area = area;
         this.sharedParts = sharedParts;
+        this.hasService = false;
     }
 
     /*
