@@ -201,17 +201,20 @@ public class BuildingsTabController implements Initializable {
 
     public void saveApartmentOwnerData(ActionEvent actionEvent) {
         if ((apartmentOwnerNameTextField.getText() != null && !apartmentOwnerNameTextField.getText().isEmpty())
-                && (apartmentOwnerEgnTextField.getText() != null && !apartmentOwnerEgnTextField.getText().isEmpty())) {
+                && (apartmentOwnerEgnTextField.getText() != null && !apartmentOwnerEgnTextField.getText().isEmpty())
+                    && (apartmentOwnerBuildingComboBox.getValue() != null)) {
 
             String apartmentOwnerName = apartmentOwnerNameTextField.getText();
             String apartmentOwnerEgn = apartmentOwnerEgnTextField.getText();
+            Building apartmentOwnerBuilding = apartmentOwnerBuildingComboBox.getValue();
 
-            Integer apartmentOwnerId = DBMethods.addApartmentOwner(apartmentOwnerName, apartmentOwnerEgn);
+            Integer apartmentOwnerId = DBMethods.addApartmentOwner(apartmentOwnerName, apartmentOwnerEgn, apartmentOwnerBuilding);
             ApartmentOwner apartmentOwnerObject = DBMethods.getApartmentOwner(apartmentOwnerId);
 
             apartmentOwnerTableView.getItems().add(apartmentOwnerObject);
             apartmentOwnerNameTextField.clear();
             apartmentOwnerEgnTextField.clear();
+            apartmentOwnerBuildingComboBox.getSelectionModel().clearSelection();
         } else {
             AlertErrorUtility.showCustomAlert("Неправилно въведени данни!");
         }

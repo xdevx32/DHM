@@ -102,10 +102,11 @@ public class ApartmentOwner implements java.io.Serializable {
 
     }
 
-    public ApartmentOwner(String name, String egn) {
+    public ApartmentOwner(String name, String egn, Building building) {
         this.idApartmentOwner = idApartmentOwner;
         this.name = name;
         this.egn = egn;
+        this.building = building;
     }
 
     /*

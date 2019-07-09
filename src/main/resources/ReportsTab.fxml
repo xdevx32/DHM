@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -11,28 +12,27 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReportsTabController">
+<AnchorPane prefHeight="750.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReportsTabController">
     <children>
-        <FlowPane prefHeight="750.0" prefWidth="1000.0">
+        <FlowPane prefHeight="750.0" prefWidth="1200.0">
             <children>
-                <GridPane prefHeight="750.0" prefWidth="1000.0" style="-fx-border-color: black; -fx-border-width: 0.1; -fx-border-style: solid;">
+                <GridPane prefHeight="750.0" prefWidth="1200.0" style="-fx-border-color: black; -fx-border-width: 0.1; -fx-border-style: solid;">
                     <columnConstraints>
                         <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
+                  <RowConstraints maxHeight="92.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="92.0" minHeight="10.0" prefHeight="92.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="125.0" minHeight="10.0" prefHeight="104.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="147.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="147.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="147.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="147.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="147.0" minHeight="10.0" prefHeight="147.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Pane prefHeight="74.0" prefWidth="499.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;">
+                        <Pane prefHeight="36.0" prefWidth="500.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="1">
                             <children>
-                                <Label alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="499.0" text="Брой  сгради">
+                                <Label alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="591.0" text="Брой  сгради">
                                     <padding>
                                         <Insets left="1.0" right="7.0" />
                                     </padding>
@@ -40,7 +40,7 @@
                               <Font size="17.0" />
                            </font>
                                 </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="105.0" layoutY="27.0" prefHeight="39.0" prefWidth="392.0" text="Брой обслужвани сгради">
+                        <Label alignment="CENTER_RIGHT" layoutX="105.0" layoutY="27.0" prefHeight="39.0" prefWidth="485.0" text="Брой обслужвани сгради">
                            <padding>
                               <Insets left="1.0" right="7.0" />
                            </padding>
@@ -50,9 +50,9 @@
                         </Label>
                             </children>
                         </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="1">
+                        <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="2">
                             <children>
-                                <Label alignment="CENTER_RIGHT" prefHeight="78.0" prefWidth="499.0" text="Брой апартаменти">
+                                <Label alignment="CENTER_RIGHT" prefHeight="78.0" prefWidth="591.0" text="Брой апартаменти">
                                     <padding>
                                         <Insets left="1.0" right="7.0" />
                                     </padding>
@@ -62,19 +62,7 @@
                                 </Label>
                             </children>
                         </Pane>
-                        <Pane prefHeight="132.0" prefWidth="499.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="6">
-                            <children>
-                                <Label alignment="CENTER_RIGHT" prefHeight="120.0" prefWidth="499.0" text="Обнови данни">
-                                    <padding>
-                                        <Insets left="1.0" right="7.0" />
-                                    </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                                </Label>
-                            </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1">
+                        <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <children>
                                 <Label fx:id="buildingCountLabel" layoutX="9.0" layoutY="5.0" prefHeight="23.0" prefWidth="115.0" text="0" textAlignment="CENTER">
                                     <font>
@@ -88,7 +76,7 @@
                         </Label>
                             </children>
                         </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                             <children>
                                 <Label fx:id="apartmentCountLabel" layoutX="9.0" layoutY="4.0" prefHeight="72.0" prefWidth="100.0" text="0">
                                     <font>
@@ -97,26 +85,9 @@
                                 </Label>
                             </children>
                         </Pane>
-                        <Pane prefHeight="155.0" prefWidth="499.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                            <children>
-                                <Button layoutX="14.0" layoutY="37.0" mnemonicParsing="false" onAction="#refreshData" prefHeight="39.0" prefWidth="100.0" text="Обнови" />
-                            </children>
-                        </Pane>
-                  <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="3">
-                     <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="121.0" prefWidth="499.0" text="Суми за плащане">
-                           <padding>
-                              <Insets left="1.0" right="7.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
                   <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="4">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="121.0" prefWidth="499.0" text="Платени суми" textAlignment="RIGHT">
+                        <Label alignment="CENTER_RIGHT" prefHeight="121.0" prefWidth="591.0" text="Суми за плащане">
                            <padding>
                               <Insets left="1.0" right="7.0" />
                            </padding>
@@ -126,7 +97,19 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="5">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="121.0" prefWidth="591.0" text="Платени суми" textAlignment="RIGHT">
+                           <padding>
+                              <Insets left="1.0" right="7.0" />
+                           </padding>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="109.0" prefWidth="557.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <children>
                         <Label fx:id="taxesToPayLabel" layoutX="9.0" prefHeight="120.0" prefWidth="126.0" text="0.0" textAlignment="CENTER">
                            <font>
@@ -135,7 +118,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <Pane prefHeight="112.0" prefWidth="556.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <children>
                         <Label fx:id="paidTaxesLabel" layoutX="9.0" prefHeight="120.0" prefWidth="169.0" text="0.0" textAlignment="CENTER">
                            <font>
@@ -144,9 +127,9 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="2">
+                  <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="3">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="120.0" prefWidth="499.0" text="Брой живущи">
+                        <Label alignment="CENTER_RIGHT" prefHeight="120.0" prefWidth="591.0" text="Брой живущи">
                            <padding>
                               <Insets left="1.0" right="7.0" />
                            </padding>
@@ -156,7 +139,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane prefHeight="30.0" prefWidth="499.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Pane prefHeight="30.0" prefWidth="499.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <children>
                         <Label fx:id="apartmentOwnerCountLabel" layoutX="9.0" prefHeight="120.0" prefWidth="100.0" text="0">
                            <font>
@@ -165,25 +148,29 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.rowIndex="5">
+                  <Label prefHeight="33.0" prefWidth="319.0" text="Вид справка" textAlignment="CENTER">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
+                  <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefHeight="120.0" prefWidth="499.0" text="Добави още справки">
-                           <padding>
-                              <Insets left="1.0" right="7.0" />
-                           </padding>
+                        <DatePicker fx:id="reportDatePicker" layoutX="292.0" layoutY="15.0" onAction="#changeReportDatePicker">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </DatePicker>
+                        <Label layoutX="14.0" layoutY="18.0" prefHeight="57.0" prefWidth="169.0" text="Стойност">
                            <font>
-                              <Font size="17.0" />
+                              <Font size="29.0" />
                            </font>
                         </Label>
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="200.0" prefWidth="200.0" style=" -fx-border-color:black; -fx-border-width: 0.1; -fx-border-style: solid;" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                     <children>
-                        <Label fx:id="totalIncomeForParks21" layoutX="9.0" prefHeight="120.0" prefWidth="169.0" text="0.0" textAlignment="CENTER">
+                        <Label layoutX="226.0" layoutY="16.0" text="Дата:">
                            <font>
-                              <Font size="24.0" />
+                              <Font size="20.0" />
                            </font>
                         </Label>
+                                <Button layoutX="494.0" layoutY="14.0" mnemonicParsing="false" onAction="#refreshData" prefHeight="28.0" prefWidth="100.0" text="Обнови" />
                      </children>
                   </Pane>
                     </children>

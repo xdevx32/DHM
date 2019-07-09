@@ -25,14 +25,16 @@ public class DBMethods {
     // Status: Done
     /* APARTMENT OWNER */
     /* Method to CREATE an APARTMENT OWNER in the database*/
-    public static Integer addApartmentOwner(String name, String egn) {
+    public static Integer addApartmentOwner(String name, String egn, Building building) {
         Session session = sessionFactory.openSession();
         Transaction tx = null;
         Integer apartmentOwnerID = null;
 
         try {
             tx = session.beginTransaction();
-            ApartmentOwner apartmentOwner = new ApartmentOwner(name, egn);
+            ApartmentOwner apartmentOwner = new ApartmentOwner(name, egn, building);
+            building.setSingleApartmentOwner(apartmentOwner);
+            session.update(building);
             apartmentOwnerID = (Integer) session.save(apartmentOwner);
             tx.commit();
         } catch (HibernateException e) {
@@ -168,6 +170,30 @@ public class DBMethods {
         return null;
     }
 
+    public static ArrayList<java.sql.Date> getPaymentDatesForApartmentOwnerSQL(ApartmentOwner apartmentOwner) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+
+            List dates = session.createSQLQuery("SELECT payments FROM ApartmentOwner_payments WHERE ApartmentOwner_idApartmentOwner=" + apartmentOwner.getIdApartmentOwner())
+                    .list();
+
+            tx.commit();
+            return new ArrayList<java.sql.Date>(dates);
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
+
+    // Status: Consider removing
     /* APARTMENT OWNER */
     /* Method to add APARTMENT OWNER for a BUILDING*/
     public static void addApartmentOwnerToBuilding(Building building, ApartmentOwner apartmentOwner) {
@@ -586,4 +612,31 @@ public class DBMethods {
         return null;
     }
 
+    /* BUILDING & APARTMENT OWNER */
+    /* */
+    public static Building getBuildingForApartmentOwner(ApartmentOwner aptOwner) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+
+            Integer idBuilding =  (Integer)session.createSQLQuery("SELECT idBuilding FROM apartment_owner WHERE idApartmentOwner=" + aptOwner.getIdApartmentOwner()).getSingleResult();
+            if (idBuilding != null) {
+                Building building = session.get(Building.class, idBuilding);
+                tx.commit();
+                return building;
+            } else {
+                return new Building();
+            }
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
 }
