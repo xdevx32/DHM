@@ -10,7 +10,7 @@ import java.util.Objects;
 
 /**
  *
- * @author Kukushev
+ * @author Angel Kukushev
  */
 public class Main extends Application {
 

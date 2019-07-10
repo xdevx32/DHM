@@ -7,6 +7,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ *
+ *  Singleton class for keeping and acessing observable lists and lists holding.
+ *
+ *
+ * @author Angel Kukushev
+ */
 public class Model {
 
     // Lists and ObservableLists
