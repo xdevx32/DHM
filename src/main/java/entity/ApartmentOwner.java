@@ -1,15 +1,9 @@
 package entity;
 
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
-import javax.print.attribute.standard.MediaSize;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -17,7 +11,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Table(name = "apartment_owner")
 public class ApartmentOwner implements java.io.Serializable {
 
-    /*
+    /**
     *
     *  Properties
     *
@@ -31,9 +25,9 @@ public class ApartmentOwner implements java.io.Serializable {
 
     private Building building;
 
-    private List<LocalDate> payments = new ArrayList<LocalDate>(0);
+    private List<LocalDate> payments = new ArrayList<>(0);
 
-    /*
+    /**
      *
      * Getters with annotations
      *
@@ -66,7 +60,7 @@ public class ApartmentOwner implements java.io.Serializable {
         return payments;
     }
 
-    /*
+    /**
      *
      * Setters
      *
@@ -92,7 +86,7 @@ public class ApartmentOwner implements java.io.Serializable {
         this.payments = payments;
     }
 
-    /*
+    /**
      *
      *  Constructors
      *
@@ -103,19 +97,18 @@ public class ApartmentOwner implements java.io.Serializable {
     }
 
     public ApartmentOwner(String name, String egn, Building building) {
-        this.idApartmentOwner = idApartmentOwner;
         this.name = name;
         this.egn = egn;
         this.building = building;
     }
 
-    /*
+    /**
      *
      *  Additional
      *
      */
 
-    public void addPayment(LocalDate date) {
+    private void addPayment(LocalDate date) {
         payments.add(date);
     }
 
