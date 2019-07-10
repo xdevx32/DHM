@@ -2,7 +2,6 @@ package utility;
 
 import entity.Building;
 import entity.DBMethods;
-import javafx.collections.FXCollections;
 
 import java.util.List;
 

@@ -6,8 +6,7 @@ import entity.DBMethods;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.Period;
-import java.util.*;
+import java.util.List;
 
 public class TaxesCalculator {
 

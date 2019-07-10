@@ -3,7 +3,6 @@ package controller;
 import entity.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -11,7 +10,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import utility.AlertErrorUtility;
 
 import java.net.URL;
-import java.util.*;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class CompaniesAndEmployeesTabController implements Initializable {
 
