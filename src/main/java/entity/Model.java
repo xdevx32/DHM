@@ -10,8 +10,8 @@ import java.util.List;
 
 /**
  *
- *  Singleton class for keeping and acessing observable lists and lists holding.
- *
+ *  Singleton class for keeping and accessing observable lists and lists that hold data.
+ *  Using it makes it easy to access the data everywhere and keep the latest changes.
  *
  * @author Angel Kukushev
  */
