@@ -261,17 +261,4 @@ public class BuildingsTabController implements Initializable {
         }
     }
 
-    public void addApartmentOwnerToBuilding(ActionEvent actionEvent) {
-        if (apartmentOwnerBuildingComboBox.getValue() != null) {
-
-            Building building = apartmentOwnerBuildingComboBox.getValue();
-            ApartmentOwner apartmentOwner = apartmentOwnerTableView.getSelectionModel().getSelectedItem();
-
-            DBMethods.addApartmentOwnerToBuilding(building, apartmentOwner);
-
-            apartmentOwnerBuildingComboBox.getSelectionModel().clearSelection();
-        } else {
-            AlertErrorUtility.showCustomAlert("Моля, изберете сграда от падащото меню.");
-        }
-    }
 }
