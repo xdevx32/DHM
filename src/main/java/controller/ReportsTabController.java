@@ -14,6 +14,13 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+/**
+ *
+ *  This is a class that represents the controller logic for Reports tab.
+ *
+ * @author Angel Kukushev
+ *
+ */
 public class ReportsTabController implements Initializable {
 
     public Label buildingCountLabel;
@@ -30,6 +37,11 @@ public class ReportsTabController implements Initializable {
 
     public Label paidTaxesLabel;
 
+    /**
+     * Initialize method for the controller.
+     *
+     * Sets initial data from calling the utility classes for calculation.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         reportDatePicker.setValue(LocalDate.now());
@@ -41,6 +53,11 @@ public class ReportsTabController implements Initializable {
         taxesToPayLabel.setText(TaxesCalculator.calculateUnpaidTaxes(LocalDate.now()).toString());
     }
 
+    /**
+     * Method that get called when date picker value changes.
+     * Used to update all fields on the report page with newly calculated values
+     * for the selected date.
+     */
     @FXML
     public void changeReportDatePicker(ActionEvent actionEvent) {
         apartmentCountLabel.setText(ApartmentsCountCalculator.calculateApartmentsCount().toString());

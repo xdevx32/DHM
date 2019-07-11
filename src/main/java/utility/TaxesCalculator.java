@@ -8,8 +8,18 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * This is a class that is used to hold methods for calculating taxes.
+ *
+ */
 public class TaxesCalculator {
 
+    /**
+     * Calculates how many taxes are paid by a given date.
+     *
+     * @param dateToCheck This is the date given for checking.
+     * @return totalTaxes Is the value of the taxes that are paid.
+     */
     public static Double calculatePaidTaxes(LocalDate dateToCheck) {
         Double totalTaxes = 0.0;
         List<ApartmentOwner> apartmentOwners = DBMethods.getApartmentOwners();
@@ -33,6 +43,13 @@ public class TaxesCalculator {
         return totalTaxes;
     }
 
+    /**
+     * Calculates how many taxes are NOT paid by a given date.
+     *
+     *
+     * @param dateToCheck This is the date given for checking.
+     * @return totalTaxes Is the value of the taxes that are NOT paid.
+     */
     public static Double calculateUnpaidTaxes(LocalDate dateToCheck) {
         Double totalUnpaidTaxes = 0.0;
 

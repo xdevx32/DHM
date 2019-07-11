@@ -17,7 +17,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ *
+ *  This is a class that works for database connection.
+ *  Implements static methods for saving, deleting, adding specific properties and more.
+ *
+ * @author Angel Kukushev
+ *
+ */
 public class DBMethods {
 
     private static SessionFactory sessionFactory = HibernateUtil.getSessionFactory();

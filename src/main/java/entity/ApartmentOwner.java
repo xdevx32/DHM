@@ -9,7 +9,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 /**
  *
- *  This is a class representing an entity for each apartment owner.
+ *  This is a class that represents an entity for each apartment owner.
  *
  * @author Angel Kukushev
  *

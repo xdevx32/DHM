@@ -19,6 +19,13 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ *
+ *  This is a class that represents the controller logic for Buildings tab.
+ *
+ * @author Angel Kukushev
+ *
+ */
 public class BuildingsTabController implements Initializable {
 
     private Model model = Model.getInstance();
@@ -81,9 +88,14 @@ public class BuildingsTabController implements Initializable {
 
     public TextField buildingNameTextField;
 
+    /**
+     * Initialize method for the controller.
+     *
+     * Loads the data from DBMethods and the model object and sets it to the UI elements.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //TODO or Not TODO
+
         final ObservableList<ApartmentOwner> apartmentOwnerData = FXCollections.observableArrayList(DBMethods.getApartmentOwners());
 
         apartmentOwnerNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -157,6 +169,9 @@ public class BuildingsTabController implements Initializable {
         });
     }
 
+    /**
+     * Method for saving all building data from the input fields on button click.
+     */
     public void saveBuildingData(ActionEvent actionEvent) {
         if ((buildingNameTextField.getText() != null && !buildingNameTextField.getText().isEmpty())
                 && (buildingAddressTextField.getText() != null && !buildingAddressTextField.getText().isEmpty())
@@ -190,6 +205,9 @@ public class BuildingsTabController implements Initializable {
         }
     }
 
+    /**
+     * Method for deleting a selected building.
+     */
     public void deleteBuildingData(ActionEvent actionEvent) {
         Building selectedObject = buildingTableView.getSelectionModel().getSelectedItem();
         if (selectedObject != null) {
@@ -199,6 +217,9 @@ public class BuildingsTabController implements Initializable {
         }
     }
 
+    /**
+     * Method for saving all apartment owner data from the input fields on button click.
+     */
     public void saveApartmentOwnerData(ActionEvent actionEvent) {
         if ((apartmentOwnerNameTextField.getText() != null && !apartmentOwnerNameTextField.getText().isEmpty())
                 && (apartmentOwnerEgnTextField.getText() != null && !apartmentOwnerEgnTextField.getText().isEmpty())
@@ -220,6 +241,9 @@ public class BuildingsTabController implements Initializable {
         }
     }
 
+    /**
+     * Method for deleting a selected apartment owner.
+     */
     public void deleteApartmentOwnerData(ActionEvent actionEvent) {
         ApartmentOwner selectedObject = apartmentOwnerTableView.getSelectionModel().getSelectedItem();
         if (selectedObject != null) {
@@ -228,6 +252,9 @@ public class BuildingsTabController implements Initializable {
         }
     }
 
+    /**
+     * Method that sets or updates tax field to a selected building.
+     */
     public void saveOrChangeTaxButton(ActionEvent actionEvent) {
         if ((taxTextField.getText() != null && !taxTextField.getText().isEmpty())) {
 
@@ -247,6 +274,9 @@ public class BuildingsTabController implements Initializable {
 
     }
 
+    /**
+     * Method that sets a payment for selected apartment owner.
+     */
     public void savePaymentAction(ActionEvent actionEvent) {
         if ((paymentDate.getValue() != null)) {
 

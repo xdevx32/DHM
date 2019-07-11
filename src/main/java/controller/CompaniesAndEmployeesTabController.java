@@ -13,6 +13,13 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ *
+ *  This is a class that represents the controller logic for Companies and employees.
+ *
+ * @author Angel Kukushev
+ *
+ */
 public class CompaniesAndEmployeesTabController implements Initializable {
 
     private Model model = Model.getInstance();
@@ -45,6 +52,11 @@ public class CompaniesAndEmployeesTabController implements Initializable {
 
     public Button addBuildingToAnEmployeeButton;
 
+    /**
+     * Initialize method for the controller.
+     *
+     * Loads the data from the model object and sets it to the UI elements.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Добавя данни в таблицата за компании
@@ -63,7 +75,6 @@ public class CompaniesAndEmployeesTabController implements Initializable {
         employeeTableView.setItems(employeeData);
 
         // Добавя данни в падащото меню за избиране на компания в която работи служител
-        //selectCompanyComboBox.getItems().clear();
 
         selectCompanyComboBox.setItems(model.getCompaniesObservableList());
 
@@ -83,6 +94,9 @@ public class CompaniesAndEmployeesTabController implements Initializable {
         });
     }
 
+    /**
+     * Method for saving all employee data from the input fields on button click.
+     */
     public void saveEmployeeData(ActionEvent actionEvent) {
         if ((employeeNameTextField.getText() != null && !employeeNameTextField.getText().isEmpty())
                 && (employeeEgnTextField.getText() != null && !employeeEgnTextField.getText().isEmpty())) {
@@ -103,6 +117,9 @@ public class CompaniesAndEmployeesTabController implements Initializable {
         }
     }
 
+    /**
+     * Method for deleting a selected employee.
+     */
     public void deleteEmployeeData(ActionEvent actionEvent) {
         Employee selectedObject = employeeTableView.getSelectionModel().getSelectedItem();
         if (selectedObject != null) {
@@ -111,6 +128,9 @@ public class CompaniesAndEmployeesTabController implements Initializable {
         }
     }
 
+    /**
+     * Method for saving all company data from the input fields on button click.
+     */
     public void saveCompanyData(ActionEvent actionEvent) {
         if ((companyNameTextField.getText() != null && !companyNameTextField.getText().isEmpty())) {
 
@@ -127,6 +147,9 @@ public class CompaniesAndEmployeesTabController implements Initializable {
         }
     }
 
+    /**
+     * Method for deleting a selected company.
+     */
     public void deleteCompanyData(ActionEvent actionEvent) {
         Company selectedObject = companyTableView.getSelectionModel().getSelectedItem();
         if (selectedObject != null) {
@@ -136,6 +159,9 @@ public class CompaniesAndEmployeesTabController implements Initializable {
         }
     }
 
+    /**
+     * Method that assigns a building to an employee.
+     */
     public void addBuildingToAnEmployeeAction(ActionEvent actionEvent) {
         Building selectedBuilding = selectBuildingComboBox.getValue();
 

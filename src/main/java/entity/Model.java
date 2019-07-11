@@ -11,6 +11,15 @@ import java.util.List;
 /**
  *
  *  Singleton class for keeping and accessing observable lists and lists that hold data.
+ *  The logic is:
+ *  1. Get an array list from the database ( with wanted objects)
+ *  2. Set the array list to the observable list.
+ *  The magic is that we use observable lists for assigning it to tables and list views
+ *  and other UI elements, and then updating by setting an array list to the OL.
+ *
+ *  Using this approach makes all changes (add, delete, modify) refresh and show
+ *  instantly on the UI part of the application.
+ *
  *  Using it makes it easy to access the data everywhere and keep the latest changes.
  *
  * @author Angel Kukushev
@@ -76,7 +85,9 @@ public class Model {
     // static variable single_instance of type Model
     private static Model single_instance = null;
 
-    // static method to create instance of Singleton class
+    /**
+     * Static method to create instance of Singleton class
+     */
     public static Model getInstance()
     {
         if (single_instance == null)
@@ -85,6 +96,10 @@ public class Model {
         return single_instance;
     }
 
+    /**
+     * No parameter constructor, used to set the initial state of
+     * the observable lists.
+     */
     public Model() {
         buildingsObservableList.setAll(DBMethods.getBuildings());
         companiesObservableList.setAll(DBMethods.getCompanies());
@@ -126,10 +141,22 @@ public class Model {
         return companiesList;
     }
 
+    /**
+     * Set method for buildings observable list.
+     *
+     * @param buildingsArrayList This is the ARRAY LIST that gets assigned to
+     *                           the observable list.
+     */
     public void setBuildingsForEmployeeOL(List<Building> buildingsArrayList) {
         buildingsForEmployeeOL.setAll(buildingsArrayList);
     }
 
+    /**
+     * Set method for apartment owner's payments observable list.
+     *
+     * @param paymentDatesForApartmentOwnerList This is the ARRAY LIST that gets assigned to
+     *                                          the observable list.
+     */
     public void setPaymentDatesForApartmentOwnerOL(List<LocalDate> paymentDatesForApartmentOwnerList) {
         this.paymentDatesForApartmentOwnerOL.setAll(paymentDatesForApartmentOwnerList);
     }
