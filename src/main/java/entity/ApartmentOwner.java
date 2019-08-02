@@ -76,6 +76,7 @@ public class ApartmentOwner implements java.io.Serializable {
      * @return payments This is a list that holds all payment dates for an apartment owner. Used for reports and checkups.
      */
     @ElementCollection(fetch = FetchType.EAGER)
+    @JoinColumn(foreignKey = @ForeignKey(name = "FK_PAYMENT" ), nullable = true)
     public List<LocalDate> getPayments() {
         return payments;
     }

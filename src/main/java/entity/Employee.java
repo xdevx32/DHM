@@ -59,7 +59,7 @@ public class Employee implements java.io.Serializable {
      * @return company This is a value representing the company that the employee works in.
      */
     @ManyToOne
-    @JoinColumn(name = "idCompany", nullable = true)
+    @JoinColumn(foreignKey = @ForeignKey(name = "FK_COMPANY" ), nullable = true)
     public Company getCompany() {
         return company;
     }
@@ -69,7 +69,7 @@ public class Employee implements java.io.Serializable {
      * @return buildings This is a set representing all buildings maintained by the employee.
      */
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "employee_building", joinColumns = {@JoinColumn(name = "idEmployee")}, inverseJoinColumns = {@JoinColumn(name = "idBuilding")})
+    @JoinTable(name = "employee_building", joinColumns = {@JoinColumn(foreignKey = @ForeignKey(name = "FK_EMPLOYEE" ))}, inverseJoinColumns = {@JoinColumn(foreignKey = @ForeignKey(name = "FK_BUILDING" ))})
     public Set<Building> getBuildings() {
         return buildings;
     }

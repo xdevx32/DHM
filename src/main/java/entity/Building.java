@@ -115,7 +115,7 @@ public class Building implements java.io.Serializable{
      * @return apartmentOwners This is a set representing all apartment owners living in a building.
      */
     @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idBuilding", nullable = true)
+    @JoinColumn(foreignKey = @ForeignKey(name = "FK_APARTMENT_OWNER" ), nullable = true)
     public Set<ApartmentOwner> getApartmentOwners() {
         return apartmentOwners;
     }
